@@ -1,34 +1,30 @@
-const api_key = "1cc614b6cd01c73622141ccf0bdceac5";
-const access_token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxY2M2MTRiNmNkMDFjNzM2MjIxNDFjY2YwYmRjZWFjNSIsInN1YiI6IjY1NjQ5MWJhYTZjMTA0MDEzODJiMGZlOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.pLiucY7Ytlm6fNHo2cRqaDEdJMoCG7dD42qJCgqcOwI";
+const api_key = '1cc614b6cd01c73622141ccf0bdceac5'
+const access_token =
+  'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxY2M2MTRiNmNkMDFjNzM2MjIxNDFjY2YwYmRjZWFjNSIsInN1YiI6IjY1NjQ5MWJhYTZjMTA0MDEzODJiMGZlOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.pLiucY7Ytlm6fNHo2cRqaDEdJMoCG7dD42qJCgqcOwI'
 
-const base_url = "https://api.themoviedb.org/3";
-const get_movies = "/discover/movie";
-const base_img = "https://image.tmdb.org/t/p/w500";
+const base_url = 'https://api.themoviedb.org/3'
+const get_movies = '/discover/movie'
+const base_img = 'https://image.tmdb.org/t/p/w500'
 const options = {
-    method: 'GET',
-    headers: {
-        accept: 'application/json',
-        Authorization: `Bearer ${access_token}`
-    }
-};
-
-
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: `Bearer ${access_token}`,
+  },
+}
 
 //const fetch = require('node-fetch');
 
 const search_form = document.getElementById('search_form')
 search_form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    const url = `${base_url}/search/movie?query=${this.search.value}`; // Utilisez des backticks ici
-    const search_results = document.querySelector('.search-results')
-    fetch(url, options)
-        .then(res => res.json())
-        .then(json => {
-            (json.results).map(result => {
-
-
-search_results.innerHTML +=
-`
+  e.preventDefault()
+  const url = `${base_url}/search/movie?query=${this.search.value}` // Utilisez des backticks ici
+  const search_results = document.querySelector('.search-results')
+  fetch(url, options)
+    .then((res) => res.json())
+    .then((json) => {
+      json.results.map((result) => {
+        search_results.innerHTML += `
  <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
                             <div class="custom-block custom-block-overlay">
                                 <a href="detail-page.html" class="custom-block-image-wrap">
@@ -46,44 +42,33 @@ search_results.innerHTML +=
                                 </div>
                             </div>
                         </div>`
-
+      })
+    })
 })
 
-        })
-       
-});
-
-
-
-
-
-
-
-
 async function fetchMovies(api) {
-    const response = await fetch(api);
-    const data = await response.json();
-    setCarousel(data.results);
-    getMovieDetails(data.results);
+  const response = await fetch(api)
+  const data = await response.json()
+  setCarousel(data.results)
+  getMovieDetails(data.results)
 }
 
 function getMovieDetails(movies) {
-let movies_urls = [];
+  let movies_urls = []
 
-    const latest_episodes = document.querySelector('.latest-episodes');
+  const latest_episodes = document.querySelector('.latest-episodes')
 
-    movies.map(movie => {
-        const url = `${base_url}/movie/${movie.id}`;
-        movies_urls.push(url)
-    })
-    const movies_urls_to_fetch=movies_urls.slice(0, 4);
-    movies_urls_to_fetch.forEach((url)=>{
-        fetch(url, options)
-        .then(res => res.json())
-        .then(json => {
-            console.log(json)
-            latest_episodes.innerHTML +=
-                `<div class="col-lg-6 col-12 mb-4 mb-lg-0">
+  movies.map((movie) => {
+    const url = `${base_url}/movie/${movie.id}`
+    movies_urls.push(url)
+  })
+  const movies_urls_to_fetch = movies_urls.slice(0, 4)
+  movies_urls_to_fetch.forEach((url) => {
+    fetch(url, options)
+      .then((res) => res.json())
+      .then((json) => {
+        console.log(json)
+        latest_episodes.innerHTML += `<div class="col-lg-6 col-12 mb-4 mb-lg-0">
                     <div class="custom-block d-flex">
                         <div class="">
                             <div class="custom-block-icon-wrap">
@@ -153,22 +138,26 @@ let movies_urls = [];
                             </a>
                         </div>
                     </div>
-                </div>`;
-        });
-    })
+                </div>`
+      })
+  })
 }
 
 async function setCarousel(movies) {
-    const carousel = document.querySelector(".owl-carousel");
-    console.log(carousel);
+  const carousel = document.querySelector('.owl-carousel')
+  console.log(carousel)
 
-    await movies.map(movie => {
-        const movie_title = (movie.original_title).split(' ').slice(0, 3).join(' ');
+  await movies.map((movie) => {
+    const movie_title = movie.original_title.split(' ').slice(0, 3).join(' ')
 
-        carousel.innerHTML += `
+    carousel.innerHTML += `
             <div class='owl-carousel-info-wrap item'>
-                <img src= ${base_img}${movie.poster_path} class='owl-carousel-image img-fluid' alt=''>
-                <img src="images/${movie.adult ? 'icon_18' : 'verified'}.png" class='owl-carousel-verified-image img-fluid' alt=''>
+                <img src= ${base_img}${
+                  movie.poster_path
+                } class='owl-carousel-image img-fluid' alt=''>
+                <img src="images/${
+                  movie.adult ? 'icon_18' : 'verified'
+                }.png" class='owl-carousel-verified-image img-fluid' alt=''>
                 <div class='owl-carousel-info'>
                     <h6 class='mb-2'>
                         ${movie_title} 
@@ -176,34 +165,28 @@ async function setCarousel(movies) {
                     <span class='badge'>${movie.release_date}</span>
                     <span class='badge'>${movie.original_language}</span>
                 </div>
-            </div>`;
-    });
+            </div>`
+  })
 
-    $('.owl-carousel').owlCarousel({
-        center: true,
-        loop: true,
-        margin: 30,
-        autoplay: false,
-        responsiveClass: true,
-        responsive: {
-            0: {
-                items: 2,
-            },
-            767: {
-                items: 3,
-            },
-            1200: {
-                items: 4,
-            }
-        }
-    });
+  $('.owl-carousel').owlCarousel({
+    center: true,
+    loop: true,
+    margin: 30,
+    autoplay: false,
+    responsiveClass: true,
+    responsive: {
+      0: {
+        items: 2,
+      },
+      767: {
+        items: 3,
+      },
+      1200: {
+        items: 4,
+      },
+    },
+  })
 }
 
-const api_url = `${base_url}${get_movies}?api_key=${api_key}`;
-fetchMovies(api_url);
-
-
-
-
-
-
+const api_url = `${base_url}${get_movies}?api_key=${api_key}`
+fetchMovies(api_url)
