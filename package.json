@@ -13,5 +13,9 @@
   "scripts": {
     "dev": "concurrently \"cd server && nodemon server.mjs\" \"cd client && npm run dev\" \"cd client && npm run sass\"",
     "dev-client": "concurrently \"cd client && npm run dev\" \"cd client && npm run sass\""
+  },
+  "dependencies": {
+    "@types/react-helmet": "^6.1.9",
+    "react-helmet": "^6.1.0"
   }
 }
