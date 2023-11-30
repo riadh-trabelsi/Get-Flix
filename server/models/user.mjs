@@ -1,11 +1,14 @@
 import mongoose from 'mongoose';
-import { compareSync, hashSync } from 'bcryptjs';
+import bcrypt from 'bcryptjs';
+
+const compareSync = bcrypt.compareSync;
+const hashSync = bcrypt.hashSync;
 
 const UserSchema = new mongoose.Schema({
     username: {
         type: String,
         validate: {
-            validator: username => UserSchema.doesNotExist({ username }),
+            validator: username => User.doesNotExist({ username }),
             message: "Username already exists"
         }
     },

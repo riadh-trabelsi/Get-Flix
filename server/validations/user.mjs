@@ -8,25 +8,20 @@ const message = 'Must be between 6-16 characters, ' +
     'one lowercase letter, one digit, ' +
     'and one special character';
 
+const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+
 const password = Joi.string()
-    .regex(/^(?=.*[A-Za-z])(?=*\d)(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/)
-    .options({
-        language: {
-            string: {
-                regex: {
-                    base: message
-                }
-            }
-        }
-    });
+    .pattern(passwordPattern)
+    .message(message)
+    .required();
 
-    export const signUp = Joi.object().keys({
-        email,
-        username,
-        password
-    });
+export const signUp = Joi.object({
+    email,
+    username,
+    password
+});
 
-    export const signIn = Joi.object().keys({
-        email,
-        password
-    });
+export const signIn = Joi.object({
+    email,
+    password
+});
