@@ -8,7 +8,7 @@ const userRoutes = express.Router();
 userRoutes.post("", async (req, res) => {
     try {
         const { username, email, password } = req.body
-        await Joi.validateAsync({ username, email, password }, signUp);
+        await signUp.validateAsync({ username, email, password });
 
         const newUser = new User({ username, email, password });
         await newUser.save();
