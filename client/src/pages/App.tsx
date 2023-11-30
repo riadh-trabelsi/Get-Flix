@@ -1,13 +1,16 @@
 import Navbar from '../components/Navbar.tsx'
+import HomePage from '../components/Home/HomePage.tsx'
 
 function App() {
   return (
     <>
       <head></head>
-      <div></div>
-      <h1>Vitefddfdf + React</h1>
+      <body>
+        <div></div>
 
-      <Navbar />
+        <Navbar />
+        <HomePage />
+      </body>
     </>
   )
 }
