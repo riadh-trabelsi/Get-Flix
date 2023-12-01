@@ -1,9 +1,10 @@
 import express from "express";
 import Joi from "joi";
-import User from "../models/user";
-import { signIn } from "../validations/user";
-import { parseError, sessionizeUser } from "../util/helpers";
-import { SESS_NAME } from "../config";
+import User from "../models/user.mjs";
+import { signIn } from "../validations/user.mjs";
+import { parseError, sessionizeUser } from "../util/helpers.mjs";
+import 'dotenv/config'
+
 
 const sessionRouter = express.Router();
 

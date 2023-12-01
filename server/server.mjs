@@ -5,7 +5,7 @@ import 'dotenv/config'
 import session from "express-session";
 import MongoDBStore from "connect-mongo";
 import mongoose from 'mongoose';
-import { userRoutes } from './routes/index.mjs';
+import { userRoutes, sessionRoutes } from './routes/index.mjs';
 
 const PORT = process.env.PORT || 5050
 const NODE_ENV = process.env.NODE_ENV || 'development';
