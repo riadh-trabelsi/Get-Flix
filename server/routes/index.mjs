@@ -1,3 +1,4 @@
 import userRoutes from './user.mjs';
-// syntactic sugar for { userRoutes: userRoutes }
+import sessionRoutes from './session';
+
 export { userRoutes };

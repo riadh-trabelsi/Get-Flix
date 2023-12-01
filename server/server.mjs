@@ -34,6 +34,8 @@ app.use(session({
 const apiRouter = express.Router();
 app.use('/api', apiRouter);
 apiRouter.use('/users', userRoutes);
+apiRouter.use('/session', sessionRoutes);
+
 
 // start the Express server
 app.listen(PORT, () => {
