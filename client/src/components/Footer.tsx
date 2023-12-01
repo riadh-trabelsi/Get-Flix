@@ -3,8 +3,8 @@ import React from 'react'
 const Footer: React.FC = () => {
   return (
    
-    <footer className="site-footer">
-      <div className="container">
+    <footer className="site-footer" style={{margin : 0}}>
+      <div className="container.fluid">
         <div className="row">
           <div className="col-lg-6 col-12 mb-5 mb-lg-0">
             <div className="subscribe-form-wrap">

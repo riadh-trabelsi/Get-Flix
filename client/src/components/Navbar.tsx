@@ -27,10 +27,10 @@ const Navbar: React.FC = () => {
         <link href="css/templatemo-pod-talk.css" rel="stylesheet" />
    
       <nav className="navbar navbar-expand-lg">
-        <div className="container">
+        <div className="container ">
           <a className="navbar-brand me-lg-5 me-0" href="index.html">
             <img
-              src="images/pod-talk-logo.png"
+              src="images/cad-canadian-dollar-sign.gif"
               className="logo-image img-fluid"
               alt="templatemo pod talk"
             />
@@ -126,7 +126,7 @@ const Navbar: React.FC = () => {
                 href="#section_3"
                 className="btn custom-btn custom-border-btn smoothscroll"
               >
-                Get started
+            Log-in
               </a>
             </div>
           </div>

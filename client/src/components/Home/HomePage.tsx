@@ -7,14 +7,15 @@ import TrendingPodcastSection from './TrendingPodcastSection.tsx'
 
 const HomePage: React.FC = () => {
   return (
-    <main>
+  <>
+ 
       <SearchResultsSection />
       <HeroSection />
       <LatestPodcastSection />
       <TopicsSection />
       <TrendingPodcastSection />
-   
-    </main>
+  </>
+  
   )
 }
 

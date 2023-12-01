@@ -11,6 +11,7 @@ https://templatemo.com/tm-584-pod-talk
 /*---------------------------------------
   CUSTOM PROPERTIES ( VARIABLES )             
 -----------------------------------------*/
+
 :root {
   --white-color:                  #ffffff;
   --primary-color:                #00CC99;
@@ -47,7 +48,7 @@ https://templatemo.com/tm-584-pod-talk
 }
 
 body {
-  background-color: var(--white-color);
+  background-color: #71cae3;
   font-family: var(--body-font-family); 
 }
 
@@ -266,7 +267,7 @@ main {
   NAVIGATION              
 -----------------------------------------*/
 .navbar {
-  background-color: transparent;
+  background-color: #070707;
   position: absolute;
   top: 0;
   right: 0;
@@ -282,12 +283,13 @@ main {
 }
 
 .navbar .logo-image {
-  width: 100px;
+  width: 150px;
 }
 
 .logo-image {
-  width: 120px;
+  width: 150px;
   height: auto;
+  margin-left: 6%;
 }
 
 .navbar-brand,
