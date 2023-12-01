@@ -13,6 +13,7 @@ const HomePage: React.FC = () => {
       <LatestPodcastSection />
       <TopicsSection />
       <TrendingPodcastSection />
+   
     </main>
   )
 }

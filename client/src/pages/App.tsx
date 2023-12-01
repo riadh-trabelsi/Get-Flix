@@ -1,16 +1,18 @@
 import Navbar from '../components/Navbar.tsx'
 import HomePage from '../components/Home/HomePage.tsx'
+import Footer from '../components/Footer.tsx'
 
 function App() {
   return (
     <>
-      <head></head>
-      <body>
-        <div></div>
-
+     
+      
+        
         <Navbar />
         <HomePage />
-      </body>
+        <Footer/>
+
+     
     </>
   )
 }

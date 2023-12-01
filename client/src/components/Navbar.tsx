@@ -1,9 +1,10 @@
 import React from 'react'
+import '../../css/bootstrap-icons.css'
 
 const Navbar: React.FC = () => {
   return (
     <>
-      <head>
+      
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -24,7 +25,7 @@ const Navbar: React.FC = () => {
         <link rel="stylesheet" href="css/owl.theme.default.min.css" />
 
         <link href="css/templatemo-pod-talk.css" rel="stylesheet" />
-      </head>
+   
       <nav className="navbar navbar-expand-lg">
         <div className="container">
           <a className="navbar-brand me-lg-5 me-0" href="index.html">
