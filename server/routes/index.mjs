@@ -14,7 +14,7 @@ app.use(cors()) // Enable CORS for all routes
 
 app.use('/api/movies', moviesRoutes)
 
-// Other routes and configurations...
+// Other routes and configurations......
 
 const port = process.env.PORT || 5050
 app.listen(port, () => {
