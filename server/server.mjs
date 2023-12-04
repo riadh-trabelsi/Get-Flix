@@ -36,7 +36,7 @@ app.use('/api', apiRouter);
 apiRouter.use('/users', userRoutes);
 apiRouter.use('/session', sessionRoutes);
 apiRouter.use('/', visitorRoutes);
-
+// apiRouter.use('/comment', commentRoutes)
 
 // start the Express server
 app.listen(PORT, () => {
