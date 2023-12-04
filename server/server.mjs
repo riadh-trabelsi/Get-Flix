@@ -1,11 +1,11 @@
-import './db/conn.mjs'
 import express from 'express'
 import cors from 'cors'
 import 'dotenv/config'
 import session from "express-session";
 import MongoDBStore from "connect-mongo";
 import mongoose from 'mongoose';
-import { userRoutes, sessionRoutes } from './routes/index.mjs';
+import './db/conn.mjs'
+import { userRoutes, sessionRoutes, visitorRoutes } from './routes/index.mjs';
 
 const PORT = process.env.PORT || 5050
 const NODE_ENV = process.env.NODE_ENV || 'development';
@@ -35,9 +35,12 @@ const apiRouter = express.Router();
 app.use('/api', apiRouter);
 apiRouter.use('/users', userRoutes);
 apiRouter.use('/session', sessionRoutes);
+apiRouter.use('/', visitorRoutes);
 
 
 // start the Express server
 app.listen(PORT, () => {
   console.log(`Server is running on port: ${PORT}`)
 })
+
+
