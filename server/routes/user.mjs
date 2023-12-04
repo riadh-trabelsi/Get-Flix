@@ -28,7 +28,8 @@ userRoutes.post("", async (req, res) => {
             age,
             email,
             username,
-            password
+            password,
+            role: "registrant",
         });
         const sessionUser = sessionizeUser(newUser);
         await newUser.save();
