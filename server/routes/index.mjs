@@ -3,7 +3,7 @@ import userRoutes from './user.mjs'
 export { userRoutes }
 
 import express from 'express'
-import moviesRoutes from './routes/movies.mjs'
+import router from './movies.mjs'
 import cors from 'cors'
 
 const app = express()
@@ -12,7 +12,7 @@ app.use(cors()) // Enable CORS for all routes
 
 // Other middleware and configurations...
 
-app.use('/api/movies', moviesRoutes)
+app.use('/api/movies', router)
 
 // Other routes and configurations...
 
