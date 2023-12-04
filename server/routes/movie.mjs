@@ -1,14 +1,14 @@
 import express from 'express'
 import axios from 'axios'
 
-const router = express.Router()
+const movieRoutes = express.Router()
 
 const apiKey = '1cc614b6cd01c73622141ccf0bdceac5'
 const access_token =
   'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxY2M2MTRiNmNkMDFjNzM2MjIxNDFjY2YwYmRjZWFjNSIsInN1YiI6IjY1NjQ5MWJhYTZjMTA0MDEzODJiMGZlOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.pLiucY7Ytlm6fNHo2cRqaDEdJMoCG7dD42qJCgqcOwI'
 
 // Route for fetching comedy movies
-router.get('/comedy', async (req, res) => {
+movieRoutes.get('/comedy', async (req, res) => {
   try {
     const response = await axios.get(
       `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=35`,
@@ -22,7 +22,7 @@ router.get('/comedy', async (req, res) => {
 })
 
 // Route for fetching action movies
-router.get('/action', async (req, res) => {
+movieRoutes.get('/action', async (req, res) => {
   try {
     const response = await axios.get(
       `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=28`,
@@ -36,7 +36,7 @@ router.get('/action', async (req, res) => {
 })
 
 // Route for fetching latest movies
-router.get('/latest', async (req, res) => {
+movieRoutes.get('/latest', async (req, res) => {
   try {
     const response = await axios.get(
       `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`,
@@ -50,7 +50,7 @@ router.get('/latest', async (req, res) => {
 })
 
 // Route for fetching upcoming movies
-router.get('/upcoming', async (req, res) => {
+movieRoutes.get('/upcoming', async (req, res) => {
   try {
     const response = await axios.get(
       `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`,
@@ -63,5 +63,5 @@ router.get('/upcoming', async (req, res) => {
   }
 })
 
-// Exporting the router as a module
-export default router
+// Exporting the movieRoutes as a module
+export default movieRoutes
