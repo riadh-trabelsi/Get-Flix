@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@types/react-helmet": "^6.1.9",
-    "react-helmet": "^6.1.0"
+    "react-helmet": "^6.1.0",
+    "react-router-dom": "^6.20.1"
   }
 }

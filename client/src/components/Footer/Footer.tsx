@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
                   pattern="[^ @]*@[^ @]*"
                   className="form-control"
                   placeholder="Email Address"
-                  required=""
+                  required
                 />
 
                 <div className="col-lg-12 col-12">

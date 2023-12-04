@@ -1,7 +1,7 @@
 // App.tsx
 
 import React, { useEffect, useState } from 'react';
-import Navbar from '../components/Navbar.tsx';
+import Navbar from '../components/Navbar/Navbar.tsx';
 import { api_key, access_token, base_url, get_movies, base_img, options, Movie } from './Api.ts';
 
 function App() {
