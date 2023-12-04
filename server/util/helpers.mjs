@@ -7,9 +7,9 @@ export const sessionizeUser = user => {
 };
 
 export const checkUserRole = (requiredRole) => (req, res, next) => {
-  if (req.user && req.user.role === requiredRole) {
-      return next();
+  if (req.session.user && req.session.user.role === requiredRole) {
+    return next();
   } else {
-      return res.status(403).json({ error: 'Permission denied' });
+    return res.status(403).json({ error: 'Permission denied' });
   }
 };
