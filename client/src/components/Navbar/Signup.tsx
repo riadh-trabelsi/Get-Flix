@@ -9,20 +9,20 @@ function Signup() {
           <h3 className="text-center">Sign up</h3>
           <div className="mb-2">
             <label htmlFor="fname">First name</label>
-            <input type="text"  placeholder="Enter first Name" className="form-control"/>
+            <input type="text"  placeholder="Enter first Name" className="form-control" required/>
           </div>
           <div className="mb-2">
             <label htmlFor="flname">Last name</label>
-            <input type="text"  placeholder="Enter last Name" className="form-control"/>
+            <input type="text"  placeholder="Enter last Name" className="form-control" required/>
           </div>
           
           <div>
             <label htmlFor="email">Email</label>
-            <input type="email" name="email" id="email"  className="form-control"/>  
+            <input type="email" name="email" id="email"  className="form-control"  placeholder="Enter Email" required/>  
           </div>
           <div>
             <label htmlFor="password">Password</label>
-            <input type="password" placeholder="Enter Password" className="form-control" />  
+            <input type="password" placeholder="Enter Password" className="form-control" required />  
           </div>
 
           <div className="d-grid">

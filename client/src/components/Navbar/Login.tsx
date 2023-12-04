@@ -7,11 +7,11 @@ const Login: React.FC = () => {
             <h3 className="text-center">Sign in</h3>
             <div>
                 <label htmlFor="email">Email</label>
-                <input type="email" name="email" id="email" />  
+                <input type="email" name="email" id="email" className="form-control" placeholder="Enter Email" required/>  
             </div>
             <div>
                 <label htmlFor="password">Password</label>
-                <input type="password" placeholder="Enter Password" className="form-control" />  
+                <input type="password" placeholder="Enter Password" className="form-control" required/>  
             </div>
 <div className="mb-2">
     <input type="checkbox" className="custom-control custom-checkbox" id="check" />
