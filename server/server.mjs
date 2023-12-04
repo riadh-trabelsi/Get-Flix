@@ -2,7 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import 'dotenv/config'
 import './db/conn.mjs'
-import { userRoutes } from './routes/index.mjs';
+import { userRoutes, movieRoutes } from './routes/index.mjs';
 
 
 const PORT = process.env.PORT || 5050
@@ -14,6 +14,8 @@ app.use(express.json())
 const apiRouter = express.Router();
 app.use('/api', apiRouter);
 apiRouter.use('/users', userRoutes);
+app.use('/api/movies', movieRoutes);
+
 
 // start the Express server
 app.listen(PORT, () => {
