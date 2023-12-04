@@ -2,8 +2,7 @@ import React from 'react'
 import '../../../css/bootstrap-icons.css'
 import './Navbar.scss'
 import '../../../css/bootstrap.min.css'
-import Login from './Login'
-import Signup from './Signup'
+import { Link } from 'react-router-dom'
 const Navbar: React.FC = () => {
   return (
     <>
@@ -35,9 +34,9 @@ const Navbar: React.FC = () => {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav ms-lg-auto">
           <li className="nav-item">
-            <a className="nav-link active" href="/">
+            <Link className="nav-link active" to="/">
               HomePage
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
             <a className="nav-link" href="/">
@@ -68,9 +67,14 @@ const Navbar: React.FC = () => {
           </li>
         </ul>
         <div className="ms-4">
-          <a href="/Login" className="btn custom-btn custom-border-btn smoothscroll">
+          <Link to="/Login" className="btn custom-btn custom-border-btn smoothscroll">
               Login
-          </a>
+          </Link>
+        </div>
+        <div className="ms-4">
+          <Link to="/Signup" className="btn custom-btn custom-border-btn smoothscroll">
+             Signup
+          </Link>
         </div>
       </div>
     </div>
