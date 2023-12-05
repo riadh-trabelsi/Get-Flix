@@ -26,12 +26,13 @@ commentRoutes.post('/addComment', checkUserRole('registrant'), async (req, res) 
             return res.status(404).send('Movie not found')
         }
 
-        const newComment = {
+        const newComment = new Comment({
             text: sanitizedText,
             userId: req.session.user._id,
             date: new Date(),
+            movieId: movieId
             // Add other comment details as needed
-        };
+        });
 
         movie.comments.push(newComment);
 
