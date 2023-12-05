@@ -1,9 +1,10 @@
-/* Error: Can't find stylesheet to import.
- *   ,
- * 9 | @import './pages/App.scss';
- *   |         ^^^^^^^^^^^^^^^^^^
- *   '
- *   src\index.scss 9:9  root stylesheet */
+/* Error: Undefined mixin.
+ *     ,
+ * 497 | @include _assert-ascending($grid-breakpoints, '$grid-breakpoints');
+ *     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ *     '
+ *   src\sass\utils\_variables.scss 497:1  @import
+ *   src\index.scss 1:9                    root stylesheet */
 
 body::before {
   font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
@@ -13,5 +14,5 @@ body::before {
   padding: 1em;
   margin-bottom: 1em;
   border-bottom: 2px solid black;
-  content: "Error: Can't find stylesheet to import.\a   \2577 \a 9 \2502  @import './pages/App.scss';\d\a   \2502          ^^^^^^^^^^^^^^^^^^\a   \2575 \a   src\\index.scss 9:9  root stylesheet";
+  content: "Error: Undefined mixin.\a     \2577 \a 497 \2502  @include _assert-ascending($grid-breakpoints, '$grid-breakpoints');\d\a     \2502  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a     \2575 \a   src\\sass\\utils\\_variables.scss 497:1  @import\a   src\\index.scss 1:9                    root stylesheet";
 }

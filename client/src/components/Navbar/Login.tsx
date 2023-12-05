@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom' // Import Link from react-router-dom
 import PasswordPage from './PasswordPage' // Import your PasswordPage component
+import './Login.css'
 
 const Login: React.FC = () => {
   return (
