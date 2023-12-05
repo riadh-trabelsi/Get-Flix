@@ -24,7 +24,7 @@ const Navbar: React.FC = () => {
         <link href="css/templatemo-pod-talk.css" rel="stylesheet" />
         <nav className="navbar navbar-expand-lg">
           <div className="container ">
-            <a className="navbar-brand me-lg-5 me-0" href="index.html">
+            <a className="navbar-brand me-lg-5 me-0" href="/">
               <img
                 src="images/cad-canadian-dollar-sign.gif"
                 className="logo-image img-fluid"
@@ -44,7 +44,7 @@ const Navbar: React.FC = () => {
                   type="search"
                   className="form-control"
                   id="search"
-                  placeholder="Search Podcast"
+                  placeholder="Search films, series"
                   aria-label="Search"
                 />
                 <button type="submit" className="form-control" id="submit">
