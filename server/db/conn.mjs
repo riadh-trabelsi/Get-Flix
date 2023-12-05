@@ -1,9 +1,10 @@
 import mongoose from 'mongoose'
+import 'dotenv/config'
+
 
 const connectionString = process.env.ATLAS_URI || ''
 
-mongoose
-  .connect(connectionString, {
+mongoose.connect(connectionString, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -13,3 +14,4 @@ mongoose
   .catch((error) => {
     console.error('Error connecting to MongoDB', error)
   })
+
