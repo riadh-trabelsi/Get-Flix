@@ -39,12 +39,20 @@ const UserSchema = new mongoose.Schema({
         type: String,
         enum: ["visitor", "registrant", "subscriber", "admin"],
         default: "visitor",
-    }
+    },
+    resetPasswordToken: String,
+    resetPasswordExpires: Date,
 }, { timestamps: true});
 
 UserSchema.pre('save', function () {
     if (this.isModified('password')) {
         this.password = hashSync(this.password, 10);
+    }
+});
+
+UserSchema.pre('findOneAndUpdate', function () {
+    if (this._update.$set && this._update.$set.password) {
+        this._update.$set.password = hashSync(this._update.$set.password, 10);
     }
 });
 
