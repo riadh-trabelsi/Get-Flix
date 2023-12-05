@@ -1,8 +1,10 @@
-import userRoutes from './user.mjs'
+import userRoutes from './user.mjs';
+import sessionRoutes from './session.mjs';
+import visitorRoutes from './visitor.mjs';
+import passwordRoutes from './password.mjs';
 import movieRoutes from './movie.mjs'
 
-// Other middleware and configurations...
+// import commentRoutes from './comment.mjs';
 
-// Other routes and configurations...
 
-export { userRoutes, movieRoutes }
+export { userRoutes, sessionRoutes, visitorRoutes, passwordRoutes, movieRoutes /**commentRoutes**/ };
