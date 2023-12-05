@@ -1,6 +1,7 @@
 import express from 'express'
 import axios from 'axios'
 import { filterByGenres, filterByYear } from './movieFilter.mjs'
+import { searchMovies } from './movieSearch.mjs'
 
 const movieRoutes = express.Router()
 
@@ -71,6 +72,16 @@ movieRoutes.get('/year/:year', async (req, res) => {
   const { year } = req.params
   try {
     const movies = await filterByYear(year)
+    res.json(movies)
+  } catch (error) {
+    res.status(500).json({ error: error.message })
+  }
+})
+
+movieRoutes.get('/search/:query', async (req, res) => {
+  const { query } = req.params
+  try {
+    const movies = await searchMovies(query)
     res.json(movies)
   } catch (error) {
     res.status(500).json({ error: error.message })
