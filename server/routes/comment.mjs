@@ -45,4 +45,4 @@ commentRoutes.post('/addComment', checkUserRole('registrant'), async (req, res) 
     }
 });
 
-export default commentRoutes;
+//export default commentRoutes;
