@@ -1,7 +1,5 @@
 import React from 'react'
-import '../../../css/bootstrap-icons.css'
-import './Navbar.scss'
-import '../../../css/bootstrap.min.css'
+
 import { Link } from 'react-router-dom'
 const Navbar: React.FC = () => {
   return (

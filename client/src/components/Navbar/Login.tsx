@@ -1,14 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom' // Import Link from react-router-dom
 import PasswordPage from './PasswordPage' // Import your PasswordPage component
-import './Login.css'
+
 
 const Login: React.FC = () => {
   return (
     <div className="login template d-flex justify-content-center align-items-center 100-w vh-100 bg-primary">
-      <div className="50-w p-5 rounded bg-white">
+      <div className="50-w p-5 rounded ">
         <form>
-          <h3 className="text-center">Sign in</h3>
+          <h3 className="text-center bg-teal">Sign in</h3>
           <div>
             <label htmlFor="email">Email</label>
             <input
