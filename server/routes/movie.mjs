@@ -1,37 +1,11 @@
 import express from 'express'
 import axios from 'axios'
-import { filterByGenres, filterByYear } from './movieFilter.mjs'
-import { searchMovies } from './movieSearch.mjs'
+import { movieFilterByGenres, movieFilterByYear } from './filter.mjs'
+import { searchMovies } from './search.mjs'
 
 const movieRoutes = express.Router()
 
 const apiKey = '1cc614b6cd01c73622141ccf0bdceac5'
-
-movieRoutes.get('/comedy', async (req, res) => {
-  try {
-    const response = await axios.get(
-      `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=35`,
-    )
-    const comedyMovies = response.data.results
-    res.json(comedyMovies)
-  } catch (error) {
-    console.error(error)
-    res.status(500).json({ error: 'Internal Server Error' })
-  }
-})
-
-movieRoutes.get('/action', async (req, res) => {
-  try {
-    const response = await axios.get(
-      `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=28`,
-    )
-    const actionMovies = response.data.results
-    res.json(actionMovies)
-  } catch (error) {
-    console.error(error)
-    res.status(500).json({ error: 'Internal Server Error' })
-  }
-})
 
 movieRoutes.get('/latest', async (req, res) => {
   try {
@@ -59,26 +33,26 @@ movieRoutes.get('/upcoming', async (req, res) => {
   }
 })
 
-movieRoutes.get('/genre/:genreId', async (req, res) => {
+movieRoutes.get('/moviegenre/:genreId', async (req, res) => {
   const { genreId } = req.params
   try {
-    const movies = await filterByGenres(genreId)
+    const movies = await movieFilterByGenres(genreId)
     res.json(movies)
   } catch (error) {
     res.status(500).json({ error: error.message })
   }
 })
-movieRoutes.get('/year/:year', async (req, res) => {
+movieRoutes.get('/movieyear/:year', async (req, res) => {
   const { year } = req.params
   try {
-    const movies = await filterByYear(year)
+    const movies = await movieFilterByYear(year)
     res.json(movies)
   } catch (error) {
     res.status(500).json({ error: error.message })
   }
 })
 
-movieRoutes.get('/search/:query', async (req, res) => {
+movieRoutes.get('/searchmovies/:query', async (req, res) => {
   const { query } = req.params
   try {
     const movies = await searchMovies(query)
