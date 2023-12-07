@@ -115,7 +115,7 @@ const Navbar: React.FC = () => {
               </div>
               <div className="ms-4">
                 <Link
-                  to="/Signup"
+                  to="/Profile"
                   className="btn custom-btn custom-border-btn smoothscroll"
                 >
                   <FontAwesomeIcon icon={faUser} />
