@@ -1,4 +1,5 @@
 import React from 'react'
+import './ContactForm.css'
 
 const ContactForm: React.FC = () => {
   return (
@@ -63,7 +64,7 @@ const ContactForm: React.FC = () => {
           defaultValue={''}
         />
       </div>
-      <button type="submit" className="btn btn-danger">
+      <button type="submit" className="btn btn-primary">
         <i className="fas fa-paper-plane" /> Send
       </button>
     </form>

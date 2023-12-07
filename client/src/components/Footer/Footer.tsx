@@ -26,13 +26,7 @@ const Footer: React.FC = () => {
 
               <li className="site-footer-link-item">
                 <a href="#" className="site-footer-link">
-                  Browse episodes
-                </a>
-              </li>
-
-              <li className="site-footer-link-item">
-                <a href="#" className="site-footer-link">
-                  Help Center
+                  Categories
                 </a>
               </li>
 
@@ -46,16 +40,9 @@ const Footer: React.FC = () => {
 
           <div className="col-lg-3 col-12">
             <p className="copyright-text mb-0">
-              Copyright © 2036 Talk Pod Company <br />
+              Copyright © Viewtopia 2023 <br />
               <br />
-              Design:
-              <a
-                rel="nofollow"
-                href="https://templatemo.com/page/1"
-                target="_parent"
-              >
-                TemplateMo
-              </a>
+              Design: Riad, Ravi
             </p>
           </div>
         </div>

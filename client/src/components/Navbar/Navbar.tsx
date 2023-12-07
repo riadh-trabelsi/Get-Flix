@@ -3,6 +3,9 @@ import '../../../css/bootstrap-icons.css'
 import './Navbar.scss'
 import '../../../css/bootstrap.min.css'
 import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
+
 const Navbar: React.FC = () => {
   return (
     <>
@@ -117,7 +120,7 @@ const Navbar: React.FC = () => {
                   to="/Signup"
                   className="btn custom-btn custom-border-btn smoothscroll"
                 >
-                  Signup
+                  <FontAwesomeIcon icon={faUser} />
                 </Link>
               </div>
             </div>
