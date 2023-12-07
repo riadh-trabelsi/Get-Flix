@@ -6,11 +6,12 @@ import Login from './components/Navbar/Login'
 import PasswordPage from './components/PasswordPage/Password'
 import ContactForm from './components/Contact/ContactForm'
 
-import './App.css'
+
 import Signup from './components/Navbar/Signup'
 const App = () => {
   return (
     <>
+    <div bg-primary>hello</div>
       <BrowserRouter>
         <Navbar />
         <Routes>
