@@ -22,8 +22,8 @@ homepageRoutes.get('/trending', async (req, res) => {
 homepageRoutes.get('/search/:query', async (req, res) => {
   const { query } = req.params
   try {
-    const homepage = await search(query)
-    res.json(homepage)
+    const searchResults = await search(query)
+    res.json(searchResults)
   } catch (error) {
     res.status(500).json({ error: error.message })
   }
