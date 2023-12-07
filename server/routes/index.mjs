@@ -1,4 +1,4 @@
-import userRoutes from './user.mjs';
+import userRoutes from './userRoute.mjs';
 import sessionRoutes from './session.mjs';
 import visitorRoutes from './visitor.mjs';
 import passwordRoutes from './password.mjs';
