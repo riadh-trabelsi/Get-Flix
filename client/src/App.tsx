@@ -8,6 +8,7 @@ import ContactForm from './components/Contact/ContactForm'
 import './App.css'
 import Signup from './components/Navbar/Signup'
 import ProfilePage from './components/Profile/Profile'
+import Movies from './components/MoviesSeries/Movies'
 const App = () => {
   return (
     <>
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="Profile" element={<ProfilePage />} />
           <Route path="password-recovery/" element={<PasswordPage />} />
           <Route path="Contact" element={<ContactForm />} />
+          <Route path="movies" element={<Movies />} />
         </Routes>
 
         <Footer />

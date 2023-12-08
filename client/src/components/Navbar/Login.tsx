@@ -101,9 +101,6 @@ const Login: React.FC = () => {
         </div>
       </div>
     </div>
-
-   
-  </>
   )
 }
 
