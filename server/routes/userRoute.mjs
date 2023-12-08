@@ -1,11 +1,11 @@
 import express from 'express'
-import { signUp, login } from '../controllers/userController.mjs'
+import { signup } from '../controllers/userController.mjs'
 import { userVerification } from '../util/userAuthMiddleware.mjs'
 
 const userRoutes = express.Router()
 
-userRoutes.post('/signup', signUp)
-userRoutes.post('/login', login)
+userRoutes.post('/signup', signup)
+
 userRoutes.post('/', userVerification)
 
 userRoutes.get('', async (req, res) => {
