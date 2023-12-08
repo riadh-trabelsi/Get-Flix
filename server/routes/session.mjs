@@ -1,7 +1,7 @@
 import express from "express";
 import Joi from "joi";
-import User from "../models/user.mjs";
-import { signIn } from "../validations/user.mjs";
+import User from "../models/userModel.mjs";
+import { signInValidation } from "../validations/userValidation.mjs";
 import { parseError, sessionizeUser } from "../util/helpers.mjs";
 import 'dotenv/config'
 
@@ -11,7 +11,7 @@ const sessionRouter = express.Router();
 sessionRouter.post("", async (req, res) => {
     try {
       const { email, password } = req.body
-      await signIn.validateAsync({ email, password });
+      await signInValidation.validateAsync({ email, password });
 
       const user = await User.findOne({ email });
       if (user && user.comparePasswords(password)) {
