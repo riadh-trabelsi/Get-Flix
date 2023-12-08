@@ -39,7 +39,6 @@ const Login: React.FC = () => {
   }
 
   return (
-    <>
     <div className="container">
       <div className="row">
         <div className="col-lg-10 col-xl-9 mx-auto">
@@ -77,7 +76,6 @@ const Login: React.FC = () => {
                   />
                   <label htmlFor="floatingPassword">Password</label>
                 </div>
-
                 <div className="d-grid mb-2">
                   <button
                     className="btn btn-lg btn-primary btn-login fw-bold text-uppercase"
@@ -87,12 +85,15 @@ const Login: React.FC = () => {
                     {loading ? 'Signing in...' : 'Sign in'}
                   </button>
                 </div>
-                <Link className="d-block text-center mt-2 small" to="/password-recovery">
+                <Link
+                  className="d-block text-center mt-2 small"
+                  to="/password-recovery"
+                >
                   Forgot Password
                 </Link>
                 <hr className="my-4" />
                 <Link className="d-block text-center mt-2 small" to="/signup">
-                  Don't have an account? SignUp
+                  Don't have an account? Sign Up
                 </Link>
               </form>
             </div>
@@ -100,9 +101,6 @@ const Login: React.FC = () => {
         </div>
       </div>
     </div>
-
-   
-  </>
   )
 }
 

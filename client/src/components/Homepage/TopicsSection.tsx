@@ -1,5 +1,6 @@
 import React from 'react'
 import './TopicSection.css'
+import './TopicsSection.css'
 const TopicsSection: React.FC = () => {
   return (
     <section className="topics-section section-padding pb-0" id="section_3">

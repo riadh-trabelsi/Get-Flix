@@ -3,6 +3,7 @@ import './Navbar.css'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 const Navbar: React.FC = () => {
   return (
@@ -18,7 +19,11 @@ const Navbar: React.FC = () => {
           href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Sono:wght@200;300;400;500;700&display=swap"
           rel="stylesheet"
         />
-        
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/bootstrap-icons.css" />
+        <link rel="stylesheet" href="css/owl.carousel.min.css" />
+        <link rel="stylesheet" href="css/owl.theme.default.min.css" />
+        <link href="css/templatemo-pod-talk.css" rel="stylesheet" />
         <nav className="navbar navbar-expand-lg">
           <div className="container ">
             <a className="navbar-brand me-lg-5 me-0" href="/">
@@ -45,7 +50,7 @@ const Navbar: React.FC = () => {
                   aria-label="Search"
                 />
                 <button type="submit" className="form-control" id="submit">
-                  <i className="bi-search" />
+                  <FontAwesomeIcon icon={faSearch} />
                 </button>
               </div>
             </form>
@@ -84,14 +89,14 @@ const Navbar: React.FC = () => {
                     aria-labelledby="navbarLightDropdownMenuLink"
                   >
                     <li>
-                      <a className="dropdown-item" href="/">
+                      <Link to="/movies" className="dropdown-item">
                         Movies
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="detail-page.html">
-                        TV Series
-                      </a>
+                      <Link to="/series" className="dropdown-item">
+                        Tv Series
+                      </Link>
                     </li>
                   </ul>
                 </li>
