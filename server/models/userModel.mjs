@@ -36,11 +36,11 @@ const UserSchema = new mongoose.Schema(
         type: Number,
         required: true,
     }, */
-    /*role: {
+    role: {
       type: String,
       enum: ['visitor', 'registrant', 'subscriber', 'admin'],
       default: 'visitor',
-    },*/
+    },
     resetPasswordToken: String,
     resetPasswordExpires: Date,
   },
