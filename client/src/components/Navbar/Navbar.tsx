@@ -94,9 +94,9 @@ const Navbar: React.FC = () => {
                       </Link>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="detail-page.html">
-                        TV Series
-                      </a>
+                      <Link to="/series" className="dropdown-item">
+                        Tv Series
+                      </Link>
                     </li>
                   </ul>
                 </li>

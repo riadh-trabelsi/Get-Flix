@@ -9,6 +9,7 @@ import './App.css'
 import Signup from './components/Navbar/Signup'
 import ProfilePage from './components/Profile/Profile'
 import Movies from './components/MoviesSeries/Movies'
+import Series from './components/MoviesSeries/Series'
 const App = () => {
   return (
     <>
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="password-recovery/" element={<PasswordPage />} />
           <Route path="Contact" element={<ContactForm />} />
           <Route path="movies" element={<Movies />} />
+          <Route path="series" element={<Series />} />
         </Routes>
 
         <Footer />
