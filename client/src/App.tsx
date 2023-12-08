@@ -11,7 +11,7 @@ import Signup from './components/Navbar/Signup'
 const App = () => {
   return (
     <>
-    <div bg-primary>hello</div>
+  
       <BrowserRouter>
         <Navbar />
         <Routes>
