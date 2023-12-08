@@ -5,7 +5,7 @@ import session from "express-session";
 import MongoDBStore from "connect-mongo";
 import mongoose from 'mongoose';
 import './db/conn.mjs'
-import { userRoutes, sessionRoutes, visitorRoutes, passwordRoutes, movieRoutes } from './routes/index.mjs';
+import { userRoutes, sessionRoutes, visitorRoutes, passwordRoutes, movieRoutes, authRoutes } from './routes/index.mjs';
 
 
 const PORT = process.env.PORT || 5050
@@ -41,6 +41,7 @@ const apiRouter = express.Router();
 app.use('/api', apiRouter);
 app.use('/api', movieRoutes)
 apiRouter.use('/users', userRoutes);
+apiRouter.use('/auth', authRoutes);
 apiRouter.use('/session', sessionRoutes);
 apiRouter.use('/password', passwordRoutes);
 apiRouter.use('/', visitorRoutes);
