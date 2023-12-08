@@ -1,5 +1,5 @@
 import React from 'react'
-import './Navbar.css'
+import './Navbar.css'import './Navbar.css'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
@@ -24,7 +24,7 @@ const Navbar: React.FC = () => {
         <link rel="stylesheet" href="css/owl.carousel.min.css" />
         <link rel="stylesheet" href="css/owl.theme.default.min.css" />
         <link href="css/templatemo-pod-talk.css" rel="stylesheet" />
-        <nav className="navbar navbar-expand-lg style:'">
+        <nav className="navbar navbar-expand-lg">
           <div className="container ">
             <a className="navbar-brand me-lg-5 me-0" href="/">
               <img

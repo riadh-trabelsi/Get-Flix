@@ -7,33 +7,33 @@ const Signup: React.FC = () => {
     lastname: '',
     email: '',
     password: '',
-  })
+  });
 
-  const [data, setData] = useState<any>(null)
+  const [data, setData] = useState<any>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:5050/api/users')
-        const result = await response.json()
-        setData(result)
+        const response = await fetch('http://localhost:5050/api/users');
+        const result = await response.json();
+        setData(result);
       } catch (error) {
-        console.error('Error fetching data:', error)
+        console.error('Error fetching data:', error);
       }
-    }
+    };
 
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
       const response = await fetch('http://localhost:5050/api/users', {
         method: 'POST',
@@ -41,15 +41,15 @@ const Signup: React.FC = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
-      })
+      });
 
-      const result = await response.json()
-      console.log('Form submitted successfully:', result)
-      setData(result)
+      const result = await response.json();
+      console.log('Form submitted successfully:', result);
+      setData(result);
     } catch (error) {
-      console.error('Error submitting form:', error)
+      console.error('Error submitting form:', error);
     }
-  }
+  };
 
   return (
     <div className="container">
@@ -128,9 +128,11 @@ const Signup: React.FC = () => {
             </div>
           </div>
         </div>
+        </div>
       </div>
-    </div>
-  )
-}
 
-export default Signup
+    </>
+  );
+};
+
+export default Signup;
