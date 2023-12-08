@@ -3,11 +3,13 @@ import 'dotenv/config';
 import jwt from 'jsonwebtoken';
 import responseHandler from './handlers/responseHandlers.mjs';
 
-const userVerification = async (req, res, next) => {
-    const token = req.cookies.jwt;
+const userAuthenticate = async (req, res, next) => {
+    
+    const token = req.cookies && req.cookies.jwt;
     
     if (!token) {
         responseHandler.unauthorize(res);
+        return;
     }
     try {    
         const decoded = jwt.verify(
@@ -30,4 +32,4 @@ const userVerification = async (req, res, next) => {
     }
 };
 
-export default userVerification;
+export default userAuthenticate;

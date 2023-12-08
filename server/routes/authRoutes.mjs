@@ -1,6 +1,6 @@
 import express from 'express'
 import { login, logout } from '../controllers/authController.mjs'
-import { userVerification } from '../util/userAuthMiddleware.mjs'
+import  userAuthenticate  from '../util/userAuthenticate.mjs'
 
 const authRoutes = express.Router();
 
