@@ -1,9 +1,16 @@
 import 'dotenv/config'
 import jwt from "jsonwebtoken";
 
-export const createSecretToken = ({_id}) =>
+const createAccessToken = (user) =>
 jwt.sign(
-    { _id },
-     process.env.TOKEN_KEY, 
+    { data: {
+        "email": user.email,
+        "roles": user.roles
+    } },
+     process.env.ACCESS_TOKEN_KEY, 
     {expiresIn: "2h"},
     );
+
+export { 
+    createAccessToken,
+}
