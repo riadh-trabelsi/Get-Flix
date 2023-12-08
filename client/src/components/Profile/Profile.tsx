@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './Profile.scss'
+import './Profile.css'
 
 const ProfilePage: React.FC = () => {
   const [profilePicture, setProfilePicture] = useState<string | null>(null)

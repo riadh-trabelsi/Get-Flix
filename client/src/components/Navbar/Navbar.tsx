@@ -1,8 +1,9 @@
 import React from 'react'
-
+import './Navbar.css'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 const Navbar: React.FC = () => {
   return (
@@ -23,7 +24,7 @@ const Navbar: React.FC = () => {
         <link rel="stylesheet" href="css/owl.carousel.min.css" />
         <link rel="stylesheet" href="css/owl.theme.default.min.css" />
         <link href="css/templatemo-pod-talk.css" rel="stylesheet" />
-        <nav className="navbar navbar-expand-lg">
+        <nav className="navbar navbar-expand-lg style:'">
           <div className="container ">
             <a className="navbar-brand me-lg-5 me-0" href="/">
               <img
@@ -49,7 +50,7 @@ const Navbar: React.FC = () => {
                   aria-label="Search"
                 />
                 <button type="submit" className="form-control" id="submit">
-                  <i className="bi-search" />
+                  <FontAwesomeIcon icon={faSearch} />
                 </button>
               </div>
             </form>
