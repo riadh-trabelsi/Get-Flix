@@ -20,7 +20,7 @@ const password = Joi.string()
   .message(message)
   .required()
 
-export const signUp = Joi.object({
+export const signUpValidation = Joi.object({
   firstname,
   lastname,
   // age,
@@ -29,7 +29,14 @@ export const signUp = Joi.object({
   password,
 })
 
-export const signIn = Joi.object({
+export const signInValidation = Joi.object({
+  email,
+  password,
+})
+
+export const infoUpdateValidation = Joi.object({
+  firstname,
+  lastname,
   email,
   password,
 })

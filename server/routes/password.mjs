@@ -1,6 +1,6 @@
 import express  from "express";
 import crypto from "crypto";
-import User from '../models/user.mjs';
+import User from '../models/userModel.mjs';
 import { transporter, resetMailOptions } from "../util/email.mjs";
 
 const passwordRoutes = express.Router()
