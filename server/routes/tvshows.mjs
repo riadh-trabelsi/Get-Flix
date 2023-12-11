@@ -1,7 +1,7 @@
 import express from 'express'
 import axios from 'axios'
 import { searchTv } from './search/searchtv.mjs'
-import TvShowModel from '../models/TvShow.mjs'
+import TvShowModel from '../models/tvmodel.mjs'
 
 const tvshowRoutes = express.Router()
 
@@ -108,6 +108,43 @@ tvshowRoutes.get('/details/:id', async (req, res) => {
     await TvShowModel.findByIdAndUpdate(id, { trailerKey })
 
     res.json(detailsToSend)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ error: 'Internal Server Error' })
+  }
+})
+
+tvshowRoutes.get('/latestepisodes/:id', async (req, res) => {
+  const { id } = req.params
+  try {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/tv/${id}?api_key=${apiKey}&append_to_response=seasons`,
+    )
+    const tvDetails = response.data
+
+    const { name: title, seasons } = tvDetails
+
+    const latestEpisodes = seasons.map((season) => {
+      const { season_number: seasonNumber, episodes } = season
+      const latestEpisode = episodes.reduce((latest, episode) =>
+        episode.air_date > latest.airDate ? episode : latest,
+      )
+
+      return {
+        seasonNumber,
+        episodeNumber: latestEpisode.episode_number,
+        name: latestEpisode.name,
+        airDate: latestEpisode.air_date,
+        overview: latestEpisode.overview,
+      }
+    })
+
+    await TvShowModel.findByIdAndUpdate(id, { episodes: latestEpisodes })
+
+    res.json({
+      title,
+      latestEpisodes,
+    })
   } catch (error) {
     console.error(error)
     res.status(500).json({ error: 'Internal Server Error' })

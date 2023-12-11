@@ -8,6 +8,15 @@ const tvShowSchema = new mongoose.Schema({
   poster_path: String,
   vote_average: Number,
   trailerkey: String,
+  episodes: [
+    {
+      seasonNumber: Number,
+      episodeNumber: Number,
+      name: String,
+      airDate: Date,
+      overview: String,
+    },
+  ],
 })
 
 const TvShowModel = mongoose.model('TvShow', tvShowSchema)
