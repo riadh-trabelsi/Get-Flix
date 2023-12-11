@@ -1,92 +1,86 @@
-import './Movies.css'
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
 interface Movie {
-  id: number
   title: string
-  // Add other properties based on your API response
+  overview: string
+  releaseDate: string
+  genres: string
+  tmdbRating: number
+  trailerKey: string | null
 }
 
 const Movies: React.FC = () => {
-  const [comedyMovies, setComedyMovies] = useState<Movie[]>([])
-  const [actionMovies, setActionMovies] = useState<Movie[]>([])
   const [latestMovies, setLatestMovies] = useState<Movie[]>([])
+  const [popularMovies, setPopularMovies] = useState<Movie[]>([])
   const [upcomingMovies, setUpcomingMovies] = useState<Movie[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const comedyResponse = await axios.get('/api/comedy')
-        setComedyMovies(comedyResponse.data.results)
+        const latestResponse = await axios.get(
+          'http://localhost:5050/movies/latest',
+        )
+        setLatestMovies(latestResponse.data)
 
-        const actionResponse = await axios.get('/api/action')
-        setActionMovies(actionResponse.data.results)
+        const popularResponse = await axios.get(
+          'http://localhost:5050/movies/popular',
+        )
+        setPopularMovies(popularResponse.data)
 
-        const latestResponse = await axios.get('/api/latest')
-        setLatestMovies(latestResponse.data.results)
-
-        const upcomingResponse = await axios.get('/api/upcoming')
-        setUpcomingMovies(upcomingResponse.data.results)
-
-        // All API calls completed, set loading to false
-        setLoading(false)
+        const upcomingResponse = await axios.get(
+          'http://localhost:5050/movies/upcoming',
+        )
+        setUpcomingMovies(upcomingResponse.data)
       } catch (error) {
         console.error('Error fetching movies:', error)
-        // Handle errors here if needed
-        setLoading(false) // Set loading to false even in case of an error
+      } finally {
+        setLoading(false)
       }
     }
 
-    // Call the API function
     fetchData()
-  }, []) // The empty dependency array ensures that this effect runs once when the component mounts
+  }, [])
 
   return (
-    <>
+    <div>
       {loading ? (
         <p>Loading...</p>
       ) : (
         <>
-          <div>
-            <h2>Comedy Movies</h2>
-            <ul>
-              {comedyMovies.map((movie) => (
-                <li key={movie.id}>{movie.title}</li>
-              ))}
-            </ul>
-          </div>
+          <h2>Latest Movies</h2>
+          <ul>
+            {latestMovies.map((movie) => (
+              <li key={movie.title}>
+                {/* Display movie details as needed */}
+                <p>{movie.title}</p>
+              </li>
+            ))}
+          </ul>
 
-          <div>
-            <h2>Action Movies</h2>
-            <ul>
-              {actionMovies.map((movie) => (
-                <li key={movie.id}>{movie.title}</li>
-              ))}
-            </ul>
-          </div>
+          <h2>Popular Movies</h2>
+          <ul>
+            {popularMovies.map((movie) => (
+              <li key={movie.title}>
+                {/* Display movie details as needed */}
+                <p>{movie.title}</p>
+              </li>
+            ))}
+          </ul>
 
-          <div>
-            <h2>Latest Movies</h2>
-            <ul>
-              {latestMovies.map((movie) => (
-                <li key={movie.id}>{movie.title}</li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h2>Upcoming Movies</h2>
-            <ul>
-              {upcomingMovies.map((movie) => (
-                <li key={movie.id}>{movie.title}</li>
-              ))}
-            </ul>
-          </div>
+          <h2>Upcoming Movies</h2>
+          <ul>
+            {upcomingMovies.map((movie) => (
+              <li key={movie.title}>
+                {/* Display movie details as needed */}
+                <p>{movie.title}</p>
+              </li>
+            ))}
+          </ul>
         </>
       )}
-    </>
+    </div>
   )
 }
 
