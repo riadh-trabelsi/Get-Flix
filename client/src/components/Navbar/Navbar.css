@@ -1,12 +1,9 @@
 .navbar {
-  background-color: rgba(20, 20, 115);
-  position: fixed;
-  top: 0;
-  right: 10px;
-  left: 0;
-  z-index: 9;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  background-image: url('../images/templatemo-wave-footer.jpg'),
+    linear-gradient(#ffffff, #348cd2);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .navbar .navbar-brand,
