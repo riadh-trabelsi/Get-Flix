@@ -19,7 +19,7 @@ const Navbar: React.FC = () => {
           href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Sono:wght@200;300;400;500;700&display=swap"
           rel="stylesheet"
         />
-        
+
         <nav className="navbar navbar-expand-lg">
           <div className="container ">
             <a className="navbar-brand me-lg-5 me-0" href="/">
