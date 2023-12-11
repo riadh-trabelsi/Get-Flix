@@ -31,7 +31,6 @@ const signup = async (req, res) => {
 
     } catch (err) {
         responseHandler.valError(res, parseError);
-        //res.status(400).send(parseError(err)); dev purposes
     };
 };
 

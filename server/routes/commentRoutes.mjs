@@ -1,7 +1,7 @@
 import express from 'express';
 import checkUserRole from '../util/helpers.mjs';
 import Joi from 'joi';
-import comment from '../validations/comment.mjs'
+import commentValidation from '../validations/comment.mjs'
 import sanitize from 'sanitize-html';
 import Movie from '../models/Movie.mjs';
 
@@ -9,7 +9,9 @@ const commentRoutes = express.Router();
 
 commentRoutes.post('/addComment', checkUserRole('registrant'), async (req, res) => {
     try{
-        const { error, value } = comment.validate(req.body);
+        
+        const { error, value } = req.body
+        await commentValidation.validate(req.body);
 
         if (error) {
             return res.status(400).send(error.details[0].message);
