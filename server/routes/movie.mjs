@@ -14,7 +14,7 @@ movieRoutes.get('/latest', async (req, res) => {
     )
     const latestMovies = response.data.results
 
-    await MovieModel.deleteMany({ latest: true }) // Clear existing latest movie data
+    await MovieModel.deleteMany({ latest: true })
     await MovieModel.insertMany(
       latestMovies.map((movie) => ({ ...movie, latest: true })),
     )
@@ -49,7 +49,7 @@ movieRoutes.get('/upcoming', async (req, res) => {
       `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`,
     )
     const upcomingMovies = response.data.results
-    await MovieModel.deleteMany({ upcoming: true }) // Clear existing upcoming movie data
+    await MovieModel.deleteMany({ upcoming: true })
     await MovieModel.insertMany(
       upcomingMovies.map((movie) => ({ ...movie, upcoming: true })),
     )
