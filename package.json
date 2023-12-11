@@ -6,7 +6,6 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-   
     "concurrently": "^8.2.0",
     "nodemon": "^3.0.1",
     "prettier": "^3.0.0",
@@ -18,8 +17,11 @@
     "dev-client": "concurrently \"cd client && npm run dev\" \"cd client && npm run sass\""
   },
   "dependencies": {
-  
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@types/react-helmet": "^6.1.9",
+    "axios": "^1.6.2",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^6.20.1"
   }
