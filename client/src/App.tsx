@@ -1,5 +1,5 @@
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import HomePage from './components/Homepage/HomePage'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
 import Login from './components/Navbar/Login'
@@ -14,32 +14,32 @@ import Welcome from './components/WelcomePage/Welcome'
 
 const App = () => {
   return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Welcome />} />
+        <Route path="*" element={<Layout />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
+  )
+}
+
+const Layout = () => {
+  const location = useLocation();
+
+  return (
     <>
-      <BrowserRouter> 
-        <Routes>
-          <Route path="/" element={<Welcome />} />
-          <Route
-            path="(.*)"
-            element={
-              <>
-                <Navbar />
-                <Routes>
-                  <Route path="homepage" element={<HomePage />} />
-                  <Route path="login" element={<Login />} />
-                  <Route path="signup" element={<Signup />} />
-                  <Route path="Profile" element={<ProfilePage />} />
-                  <Route path="password-recovery/" element={<PasswordPage />} />
-                  <Route path="Contact" element={<ContactForm />} />
-                  <Route path="movies" element={<Movies />} />
-                  <Route path="series" element={<Series />} />
-                </Routes>
-               
-              </>
-            }
-          />
-        </Routes>
-         <Footer />
-      </BrowserRouter>
+      {location.pathname !== "/" && <Navbar />}
+      <Routes>
+        <Route path="homepage" element={<HomePage />} />
+        <Route path="login" element={<Login />} />
+        <Route path="signup" element={<Signup />} />
+        <Route path="Profile" element={<ProfilePage />} />
+        <Route path="password-recovery/" element={<PasswordPage />} />
+        <Route path="Contact" element={<ContactForm />} />
+        <Route path="movies" element={<Movies />} />
+        <Route path="series" element={<Series />} />
+      </Routes>
     </>
   )
 }

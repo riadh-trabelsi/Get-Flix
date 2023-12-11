@@ -38,7 +38,7 @@ const Welcome: React.FC = () => {
               
               <div className="ms-4">
                 <Link
-                  to="/Login"
+                  to="/login"
                   className="btn custom-btn custom-border-btn smoothscroll"
                 >
                   Login
