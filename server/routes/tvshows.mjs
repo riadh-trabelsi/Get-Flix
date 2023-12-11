@@ -1,39 +1,117 @@
 import express from 'express'
-//import axios from 'axios'
-//import { searchTv } from './search.mjs'
-import { tvShowsFilterByGenres, tvShowsFilterByYear } from './filter.mjs'
+import axios from 'axios'
+import { searchTv } from './search/searchtv.mjs'
+import TvShowModel from '../models/TvShow.mjs'
 
-const tvShowsRoutes = express.Router()
+const tvshowRoutes = express.Router()
 
-// const apiKey = '1cc614b6cd01c73622141ccf0bdceac5'
-
-/*tvShowsRoutes.get('/searchtv/:query', async (req, res) => {
+const apiKey = '1cc614b6cd01c73622141ccf0bdceac5'
+tvshowRoutes.get('/searchtv/:query', async (req, res) => {
   const { query } = req.params
   try {
-    const homepage = await searchTv(query)
-    res.json(homepage)
-  } catch (error) {
-    res.status(500).json({ error: error.message })
-  }
-}) */
-
-tvShowsRoutes.get('/tvshowsgenre/:genreId', async (req, res) => {
-  const { genreId } = req.params
-  try {
-    const movies = await tvShowsFilterByGenres(genreId)
-    res.json(movies)
-  } catch (error) {
-    res.status(500).json({ error: error.message })
-  }
-})
-tvShowsRoutes.get('/tvshowsyear/:year', async (req, res) => {
-  const { year } = req.params
-  try {
-    const movies = await tvShowsFilterByYear(year)
-    res.json(movies)
+    const tv = await searchTv(query)
+    res.json(tv)
   } catch (error) {
     res.status(500).json({ error: error.message })
   }
 })
 
-export default tvShowsRoutes
+tvshowRoutes.get('/toprated', async (req, res) => {
+  try {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/tv/top_rated?api_key=${apiKey}`,
+    )
+    const topRatedTv = response.data.results
+
+    await TvShowModel.deleteMany({ toprated: true })
+    await TvShowModel.insertMany(
+      topRatedTv.map((show) => ({ ...show, toprated: true })),
+    )
+
+    res.json(topRatedTv)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ error: 'Internal Server Error' })
+  }
+})
+
+tvshowRoutes.get('/popular', async (req, res) => {
+  try {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/tv/popular?api_key=${apiKey}`,
+    )
+    const popularTv = response.data.results
+
+    await TvShowModel.deleteMany({ popular: true })
+    await TvShowModel.insertMany(
+      popularTv.map((show) => ({ ...show, popular: true })),
+    )
+
+    res.json(popularTv)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ error: 'Internal Server Error' })
+  }
+})
+
+tvshowRoutes.get('/airingtoday', async (req, res) => {
+  try {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/tv/airing_today?api_key=${apiKey}`,
+    )
+    const airingToday = response.data.results
+
+    await TvShowModel.deleteMany({ airingtoday: true })
+    await TvShowModel.insertMany(
+      airingToday.map((show) => ({ ...show, airingtoday: true })),
+    )
+
+    res.json(airingToday)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ error: 'Internal Server Error' })
+  }
+})
+
+tvshowRoutes.get('/details/:id', async (req, res) => {
+  const { id } = req.params
+  try {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/tv/${id}?api_key=${apiKey}&append_to_response=videos`,
+    )
+    const tvDetails = response.data
+
+    const {
+      name: title,
+      overview: synopsis,
+      first_air_date: releaseYear,
+      number_of_seasons: numberOfSeasons,
+      genres,
+      vote_average: tmdbRating,
+      videos,
+    } = tvDetails
+
+    const genresString = genres.map((genre) => genre.name).join(', ')
+
+    const trailerKey = videos.results.length > 0 ? videos.results[0].key : null
+
+    const detailsToSend = {
+      title,
+      synopsis,
+      releaseYear,
+      numberOfSeasons,
+      genres: genresString,
+      tmdbRating,
+      trailerKey,
+    }
+
+    await TvShowModel.findByIdAndUpdate(id, { trailerKey })
+
+    res.json(detailsToSend)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ error: 'Internal Server Error' })
+  }
+})
+
+export default tvshowRoutes

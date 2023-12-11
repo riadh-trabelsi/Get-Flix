@@ -1,10 +1,8 @@
-// search.mjs
-
 import axios from 'axios'
 
 const apiKey = '1cc614b6cd01c73622141ccf0bdceac5'
 
-export async function search(query) {
+/*export async function search(query) {
   try {
     let searchType
     if (!isNaN(query) && query.length === 4) {
@@ -65,23 +63,21 @@ async function getGenreId(query) {
     console.error(error)
     return null
   }
-}
+}  */
 
-/*
-
-export async function searchTv(query) {
+export async function search(query) {
   try {
     const response = await axios.get(
-      `https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&query=${query}`,
+      `https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&query=${query}`,
     )
     return response.data.results
   } catch (error) {
     console.error(error)
-    throw new Error('Error searching for movies')
+    throw new Error('Error searching for movies or tv shows')
   }
 }
 
-export async function searchMovies(query) {
+/* export async function searchMovies(query) {
   try {
     const response = await axios.get(
       `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`,

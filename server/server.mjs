@@ -5,6 +5,7 @@ import session from 'express-session'
 import MongoDBStore from 'connect-mongo'
 import mongoose from 'mongoose'
 import './db/conn.mjs'
+import connectDB from './db/connmovie.mjs'
 import {
   userRoutes,
   sessionRoutes,
@@ -41,11 +42,13 @@ app.use(
   }),
 )
 
+connectDB()
+
 const apiRouter = express.Router()
 app.use('/api', apiRouter)
-app.use('/api', movieRoutes)
-app.use('/api', homepageRoutes)
-app.use('/api', tvShowsRoutes)
+app.use('/movies', movieRoutes)
+app.use('/homepage', homepageRoutes)
+app.use('/tvshows', tvShowsRoutes)
 apiRouter.use('/users', userRoutes)
 apiRouter.use('/session', sessionRoutes)
 apiRouter.use('/password', passwordRoutes)

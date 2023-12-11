@@ -1,6 +1,7 @@
 import express from 'express'
 import axios from 'axios'
-import { search } from './search.mjs'
+import { search } from './search/search.mjs'
+import MovieModel from '../models/moviemodel.mjs'
 
 const homepageRoutes = express.Router()
 
@@ -11,8 +12,12 @@ homepageRoutes.get('/trending', async (req, res) => {
     const response = await axios.get(
       `https://api.themoviedb.org/3/trending/all/day?api_key=${apiKey}`,
     )
-    const trendingMovies = response.data.results
-    res.json(trendingMovies)
+    const trendingMoviesData = response.data.results
+
+    await MovieModel.deleteMany() // Clear existing data
+    await MovieModel.insertMany(trendingMoviesData)
+
+    res.json(trendingMoviesData)
   } catch (error) {
     console.error(error)
     res.status(500).json({ error: 'Internal Server Error' })
