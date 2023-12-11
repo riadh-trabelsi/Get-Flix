@@ -12,6 +12,7 @@ const Welcome: React.FC = () => {
           href="https://fonts.gstatic.com"
           crossOrigin={undefined}
         />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         <link
           href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Sono:wght@200;300;400;500;700&display=swap"
           rel="stylesheet"
@@ -19,22 +20,18 @@ const Welcome: React.FC = () => {
 
         <nav className="navbar navbar-expand-lg">
           <div className="container ">
-            <a className="navbar-brand me-lg-5 me-0" href="/">
+            <Link className="navbar-brand me-lg-5 me-0" to="/">
               <img
                 src="https://www.vtaffiliates.com/wp-content/themes/vt/images/logo.gif?v=1"
                 className="logo-image img-fluid"
                 alt="templatemo pod talk"
               />
-            </a>
+            </Link>
 
-            <div className="collapse navbar-collapse" id="navbarNav">
-              <div className="ms-4">
-                <Link
-                  to="/login"
-                  className="btn custom-btn custom-border-btn smoothscroll"
-                >
-                  Login
-                </Link>
+            <div id="navbarNav">
+              <div className="ms-auto order-2">
+              <Link to='/login'> <button> Log In</button>
+                   </Link>
               </div>
             </div>
           </div>
@@ -51,7 +48,7 @@ const Welcome: React.FC = () => {
         <div
           style={{
             position: 'absolute',
-            top: '40%',
+           marginTop: '1%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
             width: '50%',
@@ -78,13 +75,7 @@ const Welcome: React.FC = () => {
           </h3>
         </div>
         <hr />
-        <hr />
-        <hr />
-        <hr />
-        <hr />
-        <hr />
-        <hr />
-        <hr />
+       <br /><br /><br /><br /><br />
 
         <div className="row">
           <div className="col-lg-6 col-12 mx-auto">
@@ -113,13 +104,13 @@ const Welcome: React.FC = () => {
                         <small className="badge">Basic</small>
                         <div className="description">
                           <div className="title">
-                            <h3 className="title">
-                              <strong>Free basic option</strong>
-                            </h3>
+                            <h6>
+                              <strong>With Free basic option</strong>
+                            </h6>
                           </div>
-                          <h4 className="card-footer">
+                          <h6>
                             Many Features for free
-                          </h4>
+                          </h6>
                         </div>
                       </div>
                     </div>
@@ -148,13 +139,13 @@ const Welcome: React.FC = () => {
                         <small className="badge">Premium</small>
                         <div className="description">
                           <div className="title">
-                            <h3 className="title">
+                            <h6 >
                               <strong>Premium option</strong>
-                            </h3>
+                            </h6>
                           </div>
-                          <h4 className="card-footer">
+                          <h6>
                             MOST POPULAR : 30 DAYs FREE TRIAL
-                          </h4>
+                          </h6>
                         </div>
                       </div>
                     </div>
@@ -168,7 +159,8 @@ const Welcome: React.FC = () => {
                     alt="..."
                   />
                   <div className="card-body">
-                    <button> GET STARTED</button>
+                   <Link to='/signup'> <button> GET STARTED</button>
+                   </Link>
                     <hr />
                     <h5 className="card-text">
                       A cinematic experience with the best picture and audio
@@ -185,7 +177,274 @@ const Welcome: React.FC = () => {
             <div className="owl-carousel owl-theme"></div>
           </div>
         </div>
+        
       </section>
+<br />
+      <div
+          style={{
+          
+         
+           
+           textAlign:'center',
+            width: '50%',
+            marginLeft:'25%'
+          }}
+          >
+            <hr />
+      <h1
+            style={{
+              color: 'white',
+              textShadow: '2px 2px 4px rgba(0,0,0,0.8)',
+              textAlign: 'center',
+            }}
+          >
+     Watch the way you want
+Enjoy the world's greatest stories - anytime, anywhere.
+          </h1>
+          <Link to='/signup'> <button> GET STARTED</button>
+                   </Link>
+          <hr />
+          </div>
+      <section className="topics-section section-padding pb-0" id="section_3">
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-12 col-12">
+            <div className="section-title-wrap mb-5">
+            
+            </div>
+          </div>
+
+          <div className="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
+            <div className="custom-block custom-block-overlay">
+              <Link to="/" className="custom-block-image-wrap">
+                <img
+                  src="images/comedy2.avif"
+                  className="custom-block-image img-fluid"
+                  alt="Physician consulting his patient in a clinic"
+                />
+              </Link>
+
+              <div className="custom-block-info custom-block-overlay-info">
+                <h5 className="mb-1">
+                  <Link to="/"></Link>
+                </h5>
+              
+              </div>
+            </div>
+          </div>
+
+          <div className="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
+            <div className="custom-block custom-block-overlay">
+              <Link to="/" className="custom-block-image-wrap">
+                <img
+                  src="images/avatar2.jpg"
+                  className="custom-block-image img-fluid"
+                  alt="Repairman doing air conditioner service"
+                />
+              </Link>
+
+              <div className="custom-block-info custom-block-overlay-info">
+                <h5 className="mb-1">
+             
+                </h5>
+               
+              </div>
+            </div>
+          </div>
+
+          <div className="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
+            <div className="custom-block custom-block-overlay">
+              <Link to="/" className="custom-block-image-wrap">
+                <img
+                  src="images/spider1.jpeg"
+                  className="custom-block-image img-fluid"
+                  alt="Woman practicing yoga at home"
+                />
+              </Link>
+
+              <div className="custom-block-info custom-block-overlay-info">
+                <h5 className="mb-1">
+                
+                </h5>
+              
+              </div>
+            </div>
+          </div>
+
+          <div className="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
+            <div className="custom-block custom-block-overlay">
+                
+              <Link to="/" className="custom-block-image-wrap">
+                <img
+                  src="images/comedy.jpg"
+                  className="custom-block-image img-fluid"
+                  alt="Delicious meal with sambal arrangement"
+                />
+                
+              </Link>
+
+              <div className="custom-block-info custom-block-overlay-info">
+                <h5 className="mb-1">
+               
+                </h5>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div
+          style={{
+          
+         
+           
+           textAlign:'center',
+            width: '50%',
+            marginLeft:'25%'
+          }}
+          >
+            <hr />
+      <h1
+            style={{
+              color: 'white',
+              textShadow: '2px 2px 4px rgba(0,0,0,0.8)',
+              textAlign: 'center',
+            }}
+          >
+Select Your Plan
+<h3> No hidden fees, equipment rentals, or installation appointments.
+Switch plans or cancel anytime.**</h3>
+          </h1>
+          <Link to='/signup'> <button> Join Now</button>
+                   </Link>
+          <hr />
+          </div>
+
+
+
+
+         
+
+  <div className="container ">
+    
+    <table >
+      <thead className="thead-light">
+        <tr>
+          <th><h3>Options</h3></th>
+          <th><h3>Basic</h3></th>
+          <th><h3>Premium</h3></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><h5>Monthly price</h5></td>
+          <td><h5>Free</h5></td>
+          <td><h5>$9.99/mo.</h5></td>
+        </tr>
+        <hr />
+        <tr>
+          <td><h5>Streaming Library with tons of  episodes 
+</h5></td>
+          <td><span className="material-symbols-outlined">
+done
+</span></td>
+          <td><span className="material-symbols-outlined">
+done
+</span></td>
+        </tr>
+        <hr />
+        <tr>
+          <td><h5>Most new episodes </h5></td>
+          <td> <td><span className="material-symbols-outlined">
+done
+</span></td></td>
+          <td> <td><span className="material-symbols-outlined">
+done
+</span></td></td>
+        </tr>
+        <hr />
+        <tr>
+          <td><h5>Access to award-winning ViewTopia Originals</h5></td>
+          <td><span className="material-symbols-outlined">
+minimize
+</span></td>
+          <td> <td><span className="material-symbols-outlined">
+done
+</span></td></td>
+        </tr>
+        <hr />
+        <tr>
+          <td><h5>   Up to 3 user profiles</h5></td>
+          <td>   <td><span className="material-symbols-outlined">
+minimize
+</span></td></td>
+          <td> <td><span className="material-symbols-outlined">
+done
+</span></td></td>
+        </tr>
+        <hr />
+        <tr>
+          <td><h5>Watch on 2 different screens at the same time</h5></td>
+          <td>   <td><span className="material-symbols-outlined">
+minimize
+</span></td></td>
+          <td> <td><span className="material-symbols-outlined">
+done
+</span></td></td>
+        </tr>
+        <hr />
+        <tr>
+          <td><h5>No ads in streaming library</h5></td>
+          <td>   <td><span className="material-symbols-outlined">
+minimize
+</span></td></td>
+          <td> <td><span className="material-symbols-outlined">
+done
+</span></td></td>
+        </tr>
+        <hr />
+        <tr>
+          <td><h5>Download and watch</h5></td>
+          <td>   <td><span className="material-symbols-outlined">
+minimize
+</span></td></td>
+          <td> <td><span className="material-symbols-outlined">
+done
+</span></td></td>
+        </tr>
+        <hr />
+      </tbody>
+    </table>
+  
+  </div>
+
+  <div
+          style={{
+          
+         
+           
+           textAlign:'center',
+            width: '50%',
+            marginLeft:'25%'
+          }}
+          >
+            <br /><br />
+            <hr />
+      <h1
+            style={{
+              color: 'white',
+              textShadow: '2px 2px 4px rgba(0,0,0,0.8)',
+              textAlign: 'center',
+            }}
+          >
+Questions? Call 0700-700-22
+          </h1>
+        
+          <hr />
+          </div>
+
+
     </>
   )
 }

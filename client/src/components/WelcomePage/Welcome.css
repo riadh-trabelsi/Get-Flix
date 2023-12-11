@@ -196,3 +196,17 @@
     box-shadow: inset 0px 0.1em 0.6em #3c4fe0;
     transform: translateY(0em);
   }
+/* Ajoutez ce style à votre fichier CSS ou directement dans votre fichier JSX en utilisant le style en ligne */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #0c0b0b; 
+  padding: 8px; /* Espacement à l'intérieur de chaque cellule */
+  text-align: left; /* Alignement du texte à gauche dans les cellules */
+}
+tr {
+  border-bottom: 1px solid #151212; /* Bordure basse pour chaque ligne */
+}

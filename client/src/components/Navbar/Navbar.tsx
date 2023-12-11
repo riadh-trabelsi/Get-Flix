@@ -24,7 +24,7 @@ const Navbar: React.FC = () => {
           <div className="container ">
             <a className="navbar-brand me-lg-5 me-0" href="/">
               <img
-                src="images/cad-canadian-dollar-sign.gif"
+                src="https://www.vtaffiliates.com/wp-content/themes/vt/images/logo.gif?v=1"
                 className="logo-image img-fluid"
                 alt="templatemo pod talk"
               />
