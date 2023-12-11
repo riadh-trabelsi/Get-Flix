@@ -1,5 +1,5 @@
 body {
-  background-image: url('../images/templatemo-wave-footer.jpg'),
+  background-image: url('../images/templatemo-wave-banner.jpg'),
     linear-gradient(#ffffff, #348cd2);
   background-repeat: no-repeat;
   background-size: cover;
@@ -19,5 +19,3 @@ body {
   letter-spacing: 0.05rem;
   padding: 0.75rem 1rem;
 }
-
-

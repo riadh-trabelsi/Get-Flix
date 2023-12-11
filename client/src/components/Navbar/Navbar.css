@@ -1,5 +1,13 @@
 .navbar {
-  background-image: url('../images/templatemo-wave-footer.jpg'),
+  background-image: 'Get-Flix\client\images\templatemo-wave-header.jpg';
+  position: fixed;
+  top: 0;
+  right: 10px;
+  left: 0;
+  z-index: 9;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-image: url('../images/templatemo-wave-header.jpg'),
     linear-gradient(#ffffff, #348cd2);
   background-repeat: no-repeat;
   background-size: cover;
