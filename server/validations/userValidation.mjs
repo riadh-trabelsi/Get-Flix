@@ -33,3 +33,10 @@ export const signInValidation = Joi.object({
   email,
   password,
 })
+
+export const infoUpdateValidation = Joi.object({
+  firstname,
+  lastname,
+  email,
+  password,
+})
