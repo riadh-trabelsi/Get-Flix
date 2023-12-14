@@ -64,7 +64,7 @@ const Navbar: React.FC = () => {
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav ms-lg-auto">
                 <li className="nav-item">
-                  <Link className="nav-link active" to="./Homepage">
+                  <Link className="nav-link active" to="./Homepage" style= {{color:'white'}}>
                     HomePage
                   </Link>
                 </li>

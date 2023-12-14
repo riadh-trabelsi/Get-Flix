@@ -43,26 +43,56 @@ const DetailPage = () => {
   }
   console.log(contentDetails);
   return (
-    <div>
-      <h2>{contentDetails.title}</h2>
-      <img
+    <>
+
+
+<div className="row justify-content-center " style={{ margin: 0, padding: 0 }}>
+<div className="col-lg-6 col-sm-12 col-md-6" style={{ padding: 0 }}>
+    <div className="card d-flex flex-row" style={{ height: '800px', border: '3px solid #32de84',  borderRadius: '20px',  }}>
+    <img
         src={`https://image.tmdb.org/t/p/w500/${contentDetails.poster_path}`}
         alt={`${contentDetails.title} Poster`}
-        style={{ width: '70%', height: 'auto', border: '3px solid #32de84',  borderRadius: '20px', marginLeft:'10%' }}
-      />
-      <p>{contentDetails.synopsis}</p>
-      {contentDetails.trailerKey && (
-  <iframe
-    width="560"
-    height="315"
-    src={`https://www.youtube.com/embed/${contentDetails.trailerKey}`}
-    title="YouTube video player"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen >
-  </iframe>
-)}
+        style={{ width:'100%',  border: '3px solid #32de84',  borderRadius: '20px',  }}
+    />
     </div>
+    </div>
+        <div className="col-lg-4 col-sm-12 col-md-4" style={{ padding: 0, }}>
+        <div className="card d-flex flex-row " style={{  backgroundColor:'black', color: 'white', height: '800px', border: '3px solid #32de84',  borderRadius: '20px', paddingTop:'5%'  }}>
+        <div className="card-body"  style={{ overflowY: 'auto', maxHeight: '800px' }}>
+        <h2>{contentDetails.title}</h2>
+        <hr />
+        <h5> {contentDetails.synopsis}</h5>
+        <hr />
+        <h2>Genre: {contentDetails.genres}</h2>
+        <hr />
+        <h2>{contentDetails.releaseDate}</h2>
+        <hr />
+        <h2>Rating: {contentDetails.tmdbRating}</h2>
+        <hr />
+        <div className='trailer' style={{textAlign:'center'}}>
+        {contentDetails.trailerKey && (
+            <div className="embed-responsive embed-responsive-16by9" >
+        <iframe
+                className="embed-responsive-item"
+                style={{width: '90%'}}
+                src={`https://www.youtube.com/embed/${contentDetails.trailerKey}`}
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen >
+              </iframe>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+   
+    </>
   );
   
 };

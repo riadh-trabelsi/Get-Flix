@@ -31,7 +31,9 @@ const TrendingPodcastSection: React.FC = () => {
 
   return (
     <section className="trending-podcast-section section-padding">
+   
       <div className="container">
+     <hr /> <h1 style={{textAlign:'center'}}>Populars Actors </h1><br />
         <div className="row">
           {popularActors.map((actor, index) => (
             <div className="col-lg-4 col-12 mb-4 mb-lg-0" key={index}>

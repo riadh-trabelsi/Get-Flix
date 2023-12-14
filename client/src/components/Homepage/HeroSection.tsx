@@ -89,14 +89,14 @@ const HeroSection: React.FC = () => {
         <p>Loading...</p>
       ) : (
         <>
-          <h2>Trending</h2>
+        <hr />  <h1 style={{textAlign:'center'}}>Trending</h1><br />
           <Slider {...sliderSettings}>{renderMovies(trending)}</Slider>
 
-          <h2>Now Playing</h2>
+          <hr /><h1 style={{textAlign:'center'}}>Now Playing</h1><br />
           <Slider {...sliderSettings}>{renderMovies(latestMovies)}</Slider>
 
           
-          <h2>On the Air TV Shows</h2>
+          <hr /><h1 style={{textAlign:'center'}}>On the Air TV Shows</h1><br />
           <Slider {...sliderSettings}>{renderMovies(ontheair)}</Slider>
           
         </>
