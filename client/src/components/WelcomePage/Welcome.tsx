@@ -48,7 +48,7 @@ const Welcome: React.FC = () => {
         <div
           style={{
             position: 'absolute',
-           marginTop: '1%',
+           marginTop: '10%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
             width: '50%',
@@ -75,10 +75,10 @@ const Welcome: React.FC = () => {
           </h3>
         </div>
         <hr />
-       <br /><br /><br /><br /><br />
+       <br /><br /><br /><br /><br /><br />
 
-        <div className="row">
-          <div className="col-lg-6 col-12 mx-auto">
+        <div className="row" style={{ marginTop: '100px'}}>
+          <div className="col-lg-6 col-12 mx-auto ">
             <div className="text-center ">
               <div className="card-group">
                 <div className="card">
@@ -201,7 +201,6 @@ const Welcome: React.FC = () => {
      Watch the way you want
 Enjoy the world's greatest stories - anytime, anywhere.
           </h1>
-          <br />
           <Link to='/signup'> <button> GET STARTED</button>
                    </Link>
           <hr />
@@ -317,11 +316,9 @@ Select Your Plan
 <h3> No hidden fees, equipment rentals, or installation appointments.
 Switch plans or cancel anytime.**</h3>
           </h1>
-          <br />
           <Link to='/signup'> <button> Join Now</button>
-                   </Link> 
+                   </Link>
           <hr />
-          <br />
           </div>
 
 

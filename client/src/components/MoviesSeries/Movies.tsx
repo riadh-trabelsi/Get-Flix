@@ -51,7 +51,7 @@ const Movies: React.FC = () => {
   const renderMovies = (movies: Movie[]) => {
     return movies.map((movie) => (
       <div key={movie.poster_path}>
-        <p>{movie.title}</p>
+ 
         <img
           src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
           alt={`${movie.title} Poster`}
@@ -62,7 +62,7 @@ const Movies: React.FC = () => {
 
   const sliderSettings = {
     infinite: true,
-    slidesToShow: 3,
+    slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
     speed: 1500,

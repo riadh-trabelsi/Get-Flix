@@ -1,48 +1,107 @@
-import React from 'react'
-import './HeroSection.css'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import Slider from 'react-slick'
+import { Link } from 'react-router-dom'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+
+interface Movie {
+  id : number
+  title: string
+  overview: string
+  releaseDate: string
+  genres: string
+  tmdbRating: number
+  trailerKey: string | null
+  poster_path: string
+}
+
 const HeroSection: React.FC = () => {
-  return (
-    <section className="hero-section">
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-12 col-12">
-            <div className="text-center mb-5 pb-2">
-              
-              <div className="card-group">
-  
-  <div className="card">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-XIEC56urExStGBK-ifnva0wswRw8uc9G7A&usqp=CAU" className="card-img-top" alt="..." />
-    <div className="card-body">
-      <h5 className="card-title">FREEMIUM</h5>
-      <p className="card-text">
-       
-      </p>
-      <p className="card-text">
-        <small className="text-body-secondary"></small>
-      </p>
-    </div>
-  </div>
-  <div className="card">
-    <img src="https://cdn.pixabay.com/photo/2023/11/10/16/05/premium-8379664_1280.png" className="card-img-top" alt="..." />
-    <div className="card-body">
-      <h5 className="card-title">PREMIUM</h5>
-      <p className="card-text">
-      A cinematic experience with the best picture and audio quality.
-      </p>
-      <p className="card-text">
-        <small className="text-body-secondary"></small>
-      </p>
-    </div>
-  </div>
-</div>
+  const [latestMovies, setLatestMovies] = useState<Movie[]>([])
+  const [trending, setTrending] = useState<Movie[]>([])
+  const [ontheair, setOntheair] = useState<Movie[]>([])
+  const [loading, setLoading] = useState(true)
 
-            </div>
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const trendingResponse = await axios.get(
+          'http://localhost:5050/homepage/trending',
+        )
+        setTrending(trendingResponse.data)
 
-            <div className="owl-carousel owl-theme"></div>
-          </div>
-        </div>
+        
+        const ontheairResponse = await axios.get(
+          'http://localhost:5050/homepage/ontheair',
+        )
+        setOntheair(ontheairResponse.data)
+
+        const latestResponse = await axios.get(
+          'http://localhost:5050/movies/latest',
+        )
+        setLatestMovies(latestResponse.data)
+      
+        
+      } catch (error) {
+        console.error('Error fetching movies:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchData()
+  }, [])
+  const handleMovieClick = (id: number) => {
+    // Check if it's a movie or TV show based on your data
+    const isMovie = true; // You need to implement this check based on your data
+    const detailPageRoute = isMovie ? `/movie/${id}` : `/tvshow/${id}`;
+    // Redirect to the appropriate details page
+    window.location.href = detailPageRoute;
+  };
+
+  const renderMovies = (movies: Movie[]) => {
+    return movies.map((movie) => (
+      <div key={movie.poster_path} className="movie-slide" onClick={() => handleMovieClick(movie.id)}
+      >
+ <Link to="/detailpage/${movie.id}">
+        <img
+          src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+          alt={`${movie.title} Poster`}
+          style={{ width: '70%', height: 'auto', border: '3px solid #32de84',  borderRadius: '20px', marginLeft:'10%' }}
+        /></Link>
       </div>
-    </section>
+      
+    ))
+  }
+
+  const sliderSettings = {
+    infinite: true,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 1500,
+    autoplaySpeed: 3000,
+    arrows: true,
+  }
+  return (
+    <div>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <>
+          <h2>Trending</h2>
+          <Slider {...sliderSettings}>{renderMovies(trending)}</Slider>
+
+          <h2>Now Playing</h2>
+          <Slider {...sliderSettings}>{renderMovies(latestMovies)}</Slider>
+
+          
+          <h2>On the Air TV Shows</h2>
+          <Slider {...sliderSettings}>{renderMovies(ontheair)}</Slider>
+          
+        </>
+      )}
+    </div>
   )
 }
 

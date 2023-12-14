@@ -86,6 +86,7 @@ movieRoutes.get('/moviedetails/:id', async (req, res) => {
       genres,
       vote_average: tmdbRating,
       videos,
+  poster_path,
     } = movieDetails
 
     const genresString = genres.map((genre) => genre.name).join(', ')
@@ -98,10 +99,17 @@ movieRoutes.get('/moviedetails/:id', async (req, res) => {
       genres: genresString,
       tmdbRating,
       trailerKey,
+      poster_path,
     }
 
-    await MovieModel.findByIdAndUpdate(id, { trailerKey })
-
+    /*await MovieModel.findByIdAndUpdate(id, { trailerKey })*/
+    await MovieModel.findOneAndUpdate(
+      {
+        title: title,
+        overview: synopsis,
+        release_date: releaseDate
+      }
+      , { trailerKey })
     res.json(detailsToSend)
   } catch (error) {
     console.error(error)

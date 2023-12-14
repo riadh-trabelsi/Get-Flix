@@ -110,6 +110,7 @@
   line-height: 30px;
   margin-top: 5px;
   margin-bottom: 5px;
+ 
 }
 
 .custom-block .custom-block-info + div .badge:hover {
@@ -119,6 +120,7 @@
 .custom-block-full {
   background-color: var(--section-bg-color);
   border-color: transparent;
+  
 }
 
 .custom-block-full:hover {
@@ -197,4 +199,13 @@
     margin-top: 10px;
     margin-bottom: 10px;
   }
+}
+.custom-block-image {
+  height: 300px; / Ajustez la hauteur en fonction de vos besoins /
+  object-fit: cover;
+}
+
+.custom-block {
+  width: 100%; / Ajustez la largeur en fonction de vos besoins /
+  overflow: hidden; 
 }
