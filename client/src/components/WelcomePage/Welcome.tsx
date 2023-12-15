@@ -18,8 +18,8 @@ const Welcome: React.FC = () => {
           rel="stylesheet"
         />
 
-        <nav className="navbar navbar-expand-lg">
-          <div className="container ">
+        <nav className="navbar navbar-expand-lg ">
+          <div className="container "style={{height:'80px' }}>
             <Link className="navbar-brand me-lg-5 me-0" to="/">
               <img
                 src="https://www.vtaffiliates.com/wp-content/themes/vt/images/logo.gif?v=1"
@@ -45,13 +45,14 @@ const Welcome: React.FC = () => {
           backgroundBlendMode: 'multiply',
         }}
       >
-        <div
+        <div className=''
           style={{
             position: 'absolute',
-           marginTop: '10%',
+            marginTop: window.innerWidth <= 768 ? '20vh' : '20vh',
             left: '50%',
             transform: 'translate(-50%, -50%)',
             width: '50%',
+            width: window.innerWidth <= 768 ? '90%' : '50%',
           }}
         >
           <h1
@@ -70,8 +71,8 @@ const Welcome: React.FC = () => {
               textAlign: 'center',
             }}
           >
-            Watch full seasons of exclusive streaming series, current-season
-            episodes, movies, kids shows, and more.
+            Watch full seasons of exclusive streaming series
+            , movies and more.
           </h3>
         </div>
         <hr />
@@ -186,8 +187,8 @@ const Welcome: React.FC = () => {
          
            
            textAlign:'center',
-            width: '50%',
-            marginLeft:'25%'
+           width: window.innerWidth <= 768 ? '90%' : '50%',
+           marginLeft: window.innerWidth <= 768 ? '5%' : '25%',
           }}
           >
             <hr />

@@ -111,7 +111,7 @@ const Signup: React.FC = () => {
                     onChange={handleChange}
                   />
                 </div>
-
+<br />
                 <div className="d-grid mb-2">
                   <button
                     className="btn btn-lg btn-primary btn-login fw-bold "

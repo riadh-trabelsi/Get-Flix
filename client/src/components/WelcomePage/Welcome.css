@@ -174,7 +174,7 @@
     font-size: 18px;
     display: inline-block;
     outline: 0;
-    border: 0;
+ 
     cursor: pointer;
     will-change: box-shadow,transform;
     background: radial-gradient( 100% 100% at 100% 0%, #89E5FF 0%, #5468FF 100% );
@@ -182,7 +182,8 @@
     padding: 0 2em;
     border-radius: 0.3em;
     color: #fff;
-    height: 2.6em;
+    
+    width: 130px;
     text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
     transition: box-shadow 0.15s ease, transform 0.15s ease;
   }

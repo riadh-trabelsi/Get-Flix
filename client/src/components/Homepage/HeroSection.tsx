@@ -52,10 +52,9 @@ const HeroSection: React.FC = () => {
     fetchData()
   }, [])
   const handleMovieClick = (id: number) => {
-    // Check if it's a movie or TV show based on your data
-    const isMovie = true; // You need to implement this check based on your data
+    
+    const isMovie = true; 
     const detailPageRoute = isMovie ? `/movie/${id}` : `/tvshow/${id}`;
-    // Redirect to the appropriate details page
     window.location.href = detailPageRoute;
   };
 
@@ -68,7 +67,8 @@ const HeroSection: React.FC = () => {
           src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
           alt={`${movie.title} Poster`}
           style={{ width: '70%', height: 'auto', border: '3px solid #32de84',  borderRadius: '20px', marginLeft:'10%' }}
-        /></Link>
+        />
+        </Link>
       </div>
       
     ))
@@ -89,14 +89,14 @@ const HeroSection: React.FC = () => {
         <p>Loading...</p>
       ) : (
         <>
-        <hr />  <h1 style={{textAlign:'center'}}>Trending</h1><br />
+        <hr />  <h1 style={{textAlign:'center', color:'white'}}>Trending</h1><br />
           <Slider {...sliderSettings}>{renderMovies(trending)}</Slider>
 
-          <hr /><h1 style={{textAlign:'center'}}>Now Playing</h1><br />
+          <hr /><h1 style={{textAlign:'center', color:'white'}}>Now Playing</h1><br />
           <Slider {...sliderSettings}>{renderMovies(latestMovies)}</Slider>
 
           
-          <hr /><h1 style={{textAlign:'center'}}>On the Air TV Shows</h1><br />
+          <hr /><h1 style={{textAlign:'center', color:'white'}}>On the Air TV Shows</h1><br />
           <Slider {...sliderSettings}>{renderMovies(ontheair)}</Slider>
           
         </>

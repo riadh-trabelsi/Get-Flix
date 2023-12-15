@@ -69,12 +69,12 @@ const DetailPage = () => {
         <hr />
         <h2>Rating: {contentDetails.tmdbRating}</h2>
         <hr />
-        <div className='trailer' style={{textAlign:'center'}}>
+        <div className='trailer' style={{textAlign:'center',height:''}}>
         {contentDetails.trailerKey && (
             <div className="embed-responsive embed-responsive-16by9" >
         <iframe
                 className="embed-responsive-item"
-                style={{width: '90%'}}
+                style={{width: '90%', height: '220px'}}
                 src={`https://www.youtube.com/embed/${contentDetails.trailerKey}`}
                 title="YouTube video player"
                 frameBorder="0"
