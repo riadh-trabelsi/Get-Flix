@@ -1,23 +1,53 @@
-.contact-info p strong {
-  font-family: var(--title-font-family);
-  min-width: 90px;
+/*Contact sectiom*/
+.content-header{
+  font-family: 'Oleo Script', cursive;
+  color:#fcc500;
+  font-size: 45px;
 }
 
-.contact-info p a {
-  color: var(--p-color);
-  border-bottom: 1px solid;
-  padding-bottom: 3px;
+.section-content{
+  text-align: center; 
+
+}
+#contact{
+    
+    font-family: 'Teko', sans-serif;
+  padding-top: 60px;
+  width: 100%;
+  width: 100vw;
+  height: 550px;
+ 
+ 
+    color : #fff;    
 }
 
-.contact-info p a:hover {
-  color: var(--secondary-color);
+
+.form-line{
+  border-right: 1px solid #B29999;
 }
 
-.google-map {
-  border-radius: var(--border-radius-medium);
+.form-group{
+  margin-top: 10px;
+}
+label{
+  font-size: 1.3em;
+  line-height: 1em;
+  font-weight: normal;
+}
+.form-control{
+  font-size: 1.3em;
+  color: #080808;
+}
+textarea.form-control {
+    height: 135px;
+   /* margin-top: px;*/
 }
 
-.contact-form .form-floating > textarea {
-  border-radius: var(--border-radius-medium);
-  height: 150px;
+.submit{
+  font-size: 1.1em;
+  float: right;
+  width: 150px;
+  background-color: transparent;
+  color: #fff;
+
 }

@@ -59,15 +59,15 @@ const DetailPage = () => {
         <div className="col-lg-4 col-sm-12 col-md-4" style={{ padding: 0, }}>
         <div className="card d-flex flex-row " style={{  backgroundColor:'black', color: 'white', height: '800px', border: '3px solid #32de84',  borderRadius: '20px', paddingTop:'5%'  }}>
         <div className="card-body"  style={{ overflowY: 'auto', maxHeight: '800px' }}>
-        <h2>{contentDetails.title}</h2>
+        <h5>{contentDetails.title}</h5>
         <hr />
         <h5> {contentDetails.synopsis}</h5>
         <hr />
-        <h2>Genre: {contentDetails.genres}</h2>
+        <h5>Genre: {contentDetails.genres}</h5>
         <hr />
-        <h2>{contentDetails.releaseDate}</h2>
+        <h5>{contentDetails.releaseDate}</h5>
         <hr />
-        <h2>Rating: {contentDetails.tmdbRating}</h2>
+        <h5>Rating: {contentDetails.tmdbRating}</h5>
         <hr />
         <div className='trailer' style={{textAlign:'center',height:''}}>
         {contentDetails.trailerKey && (

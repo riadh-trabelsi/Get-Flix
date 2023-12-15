@@ -5,7 +5,7 @@ import './Welcome.css'
 const Welcome: React.FC = () => {
   return (
     <>
-      <div>
+      
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -36,7 +36,7 @@ const Welcome: React.FC = () => {
             </div>
           </div>
         </nav>
-      </div>
+    
       <section
         className="hero-section"
         style={{
@@ -45,17 +45,18 @@ const Welcome: React.FC = () => {
           backgroundBlendMode: 'multiply',
         }}
       >
-        <div className=''
-          style={{
-            position: 'absolute',
-            marginTop: window.innerWidth <= 768 ? '20vh' : '20vh',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: '50%',
-            width: window.innerWidth <= 768 ? '90%' : '50%',
-          }}
-        >
-          <h1
+        <br />
+        <div className='hello'
+        
+         style={{
+           position: 'absolute',
+           marginTop: window.innerWidth <= 768 ? '17vh' : '18vh', // Adjust this value as needed
+           left: '50%',
+           transform: 'translate(-50%, -50%)',
+         }}
+       >
+        
+          <h2
             style={{
               color: 'white',
               textShadow: '2px 2px 4px rgba(0,0,0,0.8)',
@@ -63,8 +64,8 @@ const Welcome: React.FC = () => {
             }}
           >
             WITH VIEWTOPIA
-          </h1>
-          <h3
+          </h2>
+          <h4
             style={{
               color: 'white',
               textShadow: '2px 2px 4px rgba(0,0,0,0.8)',
@@ -73,12 +74,12 @@ const Welcome: React.FC = () => {
           >
             Watch full seasons of exclusive streaming series
             , movies and more.
-          </h3>
+          </h4>
         </div>
-        <hr />
-       <br /><br /><br /><br /><br /><br />
-
-        <div className="row" style={{ marginTop: '100px'}}>
+       
+      <hr />
+<br /><br /><br /><br /><br />
+        <div className="row" style={{ marginTop: '150px'}}>
           <div className="col-lg-6 col-12 mx-auto ">
             <div className="text-center ">
               <div className="card-group">
@@ -192,7 +193,7 @@ const Welcome: React.FC = () => {
           }}
           >
             <hr />
-      <h1
+      <h3
             style={{
               color: 'white',
               textShadow: '2px 2px 4px rgba(0,0,0,0.8)',
@@ -201,7 +202,7 @@ const Welcome: React.FC = () => {
           >
      Watch the way you want
 Enjoy the world's greatest stories - anytime, anywhere.
-          </h1>
+          </h3>
           <Link to='/signup'> <button> GET STARTED</button>
                    </Link>
           <hr />
@@ -314,8 +315,14 @@ Enjoy the world's greatest stories - anytime, anywhere.
             }}
           >
 Select Your Plan
-<h3> No hidden fees, equipment rentals, or installation appointments.
-Switch plans or cancel anytime.**</h3>
+<h4 
+
+style={{
+  color: 'white',
+  textShadow: '2px 2px 4px rgba(0,0,0,0.8)',
+  textAlign: 'center',
+}}> No hidden fees, equipment rentals, or installation appointments.
+Switch plans or cancel anytime.**</h4>
           </h1>
           <Link to='/signup'> <button> Join Now</button>
                    </Link>
@@ -343,7 +350,7 @@ Switch plans or cancel anytime.**</h3>
           <td><h5>Free</h5></td>
           <td><h5>$9.99/mo.</h5></td>
         </tr>
-        <hr />
+        
         <tr>
           <td><h5>Streaming Library with tons of  episodes 
 </h5></td>
@@ -354,7 +361,7 @@ done
 done
 </span></td>
         </tr>
-        <hr />
+     
         <tr>
           <td><h5>Most new episodes </h5></td>
           <td> <td><span className="material-symbols-outlined">
@@ -364,7 +371,7 @@ done
 done
 </span></td></td>
         </tr>
-        <hr />
+      
         <tr>
           <td><h5>Access to award-winning ViewTopia Originals</h5></td>
           <td><span className="material-symbols-outlined">
@@ -374,7 +381,7 @@ minimize
 done
 </span></td></td>
         </tr>
-        <hr />
+    
         <tr>
           <td><h5>   Up to 3 user profiles</h5></td>
           <td>   <td><span className="material-symbols-outlined">
@@ -384,7 +391,7 @@ minimize
 done
 </span></td></td>
         </tr>
-        <hr />
+       
         <tr>
           <td><h5>Watch on 2 different screens at the same time</h5></td>
           <td>   <td><span className="material-symbols-outlined">
@@ -394,7 +401,7 @@ minimize
 done
 </span></td></td>
         </tr>
-        <hr />
+      
         <tr>
           <td><h5>No ads in streaming library</h5></td>
           <td>   <td><span className="material-symbols-outlined">
@@ -404,7 +411,7 @@ minimize
 done
 </span></td></td>
         </tr>
-        <hr />
+    
         <tr>
           <td><h5>Download and watch</h5></td>
           <td>   <td><span className="material-symbols-outlined">
@@ -414,7 +421,7 @@ minimize
 done
 </span></td></td>
         </tr>
-        <hr />
+     
       </tbody>
     </table>
   

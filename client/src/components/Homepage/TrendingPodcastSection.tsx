@@ -33,7 +33,7 @@ const TrendingPodcastSection: React.FC = () => {
     <section className="trending-podcast-section section-padding">
    
       <div className="container">
-     <hr /> <h1 style={{textAlign:'center'}}>Populars Actors </h1><br />
+     <hr /> <h1 style={{textAlign:'center',color:'white'}}>Populars Actors </h1><br />
         <div className="row">
           {popularActors.map((actor, index) => (
             <div className="col-lg-4 col-12 mb-4 mb-lg-0" key={index}>
@@ -49,7 +49,7 @@ const TrendingPodcastSection: React.FC = () => {
                 </div>
 
                 <div className="custom-block-info">
-                  <h5 className="mb-2">
+                  <h5 className="mb-2" style={{color:'black'}}>
                     {actor.name} <hr />
                     Known for {actor.known_for_department}
 

@@ -171,7 +171,7 @@
     }
   }
   button {
-    font-size: 18px;
+    font-size: 12px;
     display: inline-block;
     outline: 0;
  
@@ -205,10 +205,12 @@ table {
 }
 
 td, th {
-  border: 1px solid #0c0b0b; 
+
   padding: 8px; /* Espacement à l'intérieur de chaque cellule */
   text-align: left; /* Alignement du texte à gauche dans les cellules */
+ 
 }
-tr {
-  border-bottom: 1px solid #151212; /* Bordure basse pour chaque ligne */
+
+h5 {
+  color: white;
 }
