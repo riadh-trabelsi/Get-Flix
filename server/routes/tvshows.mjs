@@ -79,6 +79,9 @@ tvshowRoutes.get('/details/:id', async (req, res) => {
     const response = await axios.get(
       `https://api.themoviedb.org/3/tv/${id}?api_key=${apiKey}&append_to_response=videos`,
     )
+    if (response.status !== 200) {
+      throw new Error(`Request failed with status ${response.status}`)
+    }
     const tvDetails = response.data
 
     const {
@@ -104,6 +107,7 @@ tvshowRoutes.get('/details/:id', async (req, res) => {
       tmdbRating,
       trailerKey,
     }
+    console.log(detailsToSend)
 
     await TvShowModel.findOneAndUpdate(
       {
@@ -116,7 +120,9 @@ tvshowRoutes.get('/details/:id', async (req, res) => {
     res.json(detailsToSend)
   } catch (error) {
     console.error(error)
-    res.status(500).json({ error: 'Internal Server Error' })
+    res
+      .status(500)
+      .json({ error: 'Internal Server Error', details: error.message })
   }
 })
 

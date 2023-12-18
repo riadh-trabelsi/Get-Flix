@@ -4,12 +4,11 @@ import './ContactForm.css';
 const ContactForm: React.FC = () => {
   return (
     <section id="contact">
-      <div className="section-content">
-      </div>
+      <div className="section-content"></div>
       <div className="contact-section">
         <div className="container">
           <form>
-            <div className='row'>
+            <div className="row">
               <div className="col-md-6 form-line">
                 <div className="form-group">
                   <label htmlFor="exampleInputUsername">First name</label>
@@ -38,7 +37,7 @@ const ContactForm: React.FC = () => {
                     placeholder=" Enter Email"
                   />
                 </div>
-                
+
                 <div className="form-group">
                   <label htmlFor="exampleInputUsername">Subject</label>
                   <input
@@ -56,12 +55,13 @@ const ContactForm: React.FC = () => {
                     className="form-control"
                     id="description"
                     placeholder="Enter Your Message"
-                    defaultValue={""}
+                    defaultValue={''}
                   />
                 </div>
                 <div className="form-group text-center">
                   <button type="button" className="btn btn-default submit">
-                    <i className="fa fa-paper-plane" aria-hidden="true" /> Send Message
+                    <i className="fa fa-paper-plane" aria-hidden="true" /> Send
+                    Message
                   </button>
                 </div>
               </div>
@@ -70,7 +70,7 @@ const ContactForm: React.FC = () => {
         </div>
       </div>
     </section>
-  );
+  )
 }
 
 export default ContactForm;

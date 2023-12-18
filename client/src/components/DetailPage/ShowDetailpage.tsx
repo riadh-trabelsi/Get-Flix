@@ -1,23 +1,25 @@
-// MovieDetailPage.tsx
+// TVShowDetailPage.tsx
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 
-interface MovieDetail {
-  // Define the types for the movie details
+interface TVShowDetail {
+  // Define the types for the TV show details
 }
 
-const MovieDetailPage: React.FC = () => {
+const TVShowDetailPage: React.FC = () => {
   const { id } = useParams()
-  const [contentDetails, setContentDetails] = useState<MovieDetail | null>(null)
+  const [contentDetails, setContentDetails] = useState<TVShowDetail | null>(
+    null,
+  )
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<Error | null>(null)
 
   useEffect(() => {
     const fetchContentDetails = async () => {
       try {
-        const endpoint = `http://localhost:5050/movies/moviedetails/${id}`
-        const response = await axios.get<MovieDetail>(endpoint)
+        const endpoint = `http://localhost:5050/tvshows/details/${id}`
+        const response = await axios.get<TVShowDetail>(endpoint)
         setContentDetails(response.data)
       } catch (error) {
         console.error('Error fetching content details:', error)
@@ -116,9 +118,8 @@ const MovieDetailPage: React.FC = () => {
           </div>
         </div>
       </div>
-      {/* Reste du code pour les détails du film */}
     </>
   )
 }
 
-export default MovieDetailPage
+export default TVShowDetailPage

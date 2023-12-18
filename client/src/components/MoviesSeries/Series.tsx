@@ -5,21 +5,22 @@ import { Link } from 'react-router-dom'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
-interface Movie {
-  id : number
+interface TvShow {
+  id: number
   title: string
   overview: string
-  releaseDate: string
+  releaseYear: string
   genres: string
   tmdbRating: number
   trailerKey: string | null
   poster_path: string
+  type: string
 }
 
-const Movies: React.FC = () => {
-  const [toprated, setToprated] = useState<Movie[]>([])
-  const [popular, setPopular] = useState<Movie[]>([])
-  const [airingtoday, setAiringToday] = useState<Movie[]>([])
+const TvShows: React.FC = () => {
+  const [toprated, setToprated] = useState<TvShow[]>([])
+  const [popular, setPopular] = useState<TvShow[]>([])
+  const [airingtoday, setAiringToday] = useState<TvShow[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -39,7 +40,6 @@ const Movies: React.FC = () => {
           'http://localhost:5050/tvshows/airingtoday',
         )
         setAiringToday(airingtodayResponse.data)
-
       } catch (error) {
         console.error('Error fetching movies:', error)
       } finally {
@@ -50,23 +50,31 @@ const Movies: React.FC = () => {
     fetchData()
   }, [])
 
-  const handleMovieClick = (id: number) => {
-    
-    const isMovie = true; 
-    const detailPageRoute = isMovie ? `/movie/${id}` : `/tvshow/${id}`;
-    window.location.href = detailPageRoute;
-  };
+  const handleTvShowClick = (id: number) => {
+    const isMovie = false
+    const TvDetailPageRoute = isMovie ? `/movie/${id}` : `/tvshow/${id}`
+    window.location.href = TvDetailPageRoute
+  }
 
-  const renderMovies = (movies: Movie[]) => {
-    return movies.map((movie) => (
-      <div key={movie.poster_path} className="movie-slide" onClick={() => handleMovieClick(movie.id)}
+  const renderTvShows = (tvShows: TvShow[]) => {
+    return tvShows.map((tvShow) => (
+      <div
+        key={tvShow.poster_path}
+        className="tv-show-slide"
+        onClick={() => handleTvShowClick(tvShow.id)}
       >
-  <Link to="/detailpage/${movie.id}">
-        <img
-          src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-          alt={`${movie.title} Poster`}
-          style={{ width: '70%', height: 'auto', border: '3px solid #32de84',  borderRadius: '20px', marginLeft:'10%' }}
-        />
+        <Link to={`/tvshow/${tvShow.id}`}>
+          <img
+            src={`https://image.tmdb.org/t/p/w500/${tvShow.poster_path}`}
+            alt={`${tvShow.title} Poster`}
+            style={{
+              width: '70%',
+              height: 'auto',
+              border: '3px solid #32de84',
+              borderRadius: '20px',
+              marginLeft: '10%',
+            }}
+          />
         </Link>
       </div>
     ))
@@ -88,18 +96,24 @@ const Movies: React.FC = () => {
         <p>Loading...</p>
       ) : (
         <>
-          <h2 style={{textAlign:'center', color:'white'}}>Top Rated</h2>
-          <Slider {...sliderSettings}>{renderMovies(toprated)}</Slider>
+          <h2 style={{ textAlign: 'center', color: 'white' }}>
+            Top Rated TV Shows
+          </h2>
+          <Slider {...sliderSettings}>{renderTvShows(toprated)}</Slider>
 
-          <hr /><h2 style={{textAlign:'center', color:'white'}}>Popular</h2>
-          <Slider {...sliderSettings}>{renderMovies(popular)}</Slider>
+          <hr />
+          <h2 style={{ textAlign: 'center', color: 'white' }}>
+            Popular TV Shows
+          </h2>
+          <Slider {...sliderSettings}>{renderTvShows(popular)}</Slider>
 
-          <hr /><h2 style={{textAlign:'center', color:'white'}}>Upcoming Movies</h2>
-          <Slider {...sliderSettings}>{renderMovies(airingtoday)}</Slider>
+          <hr />
+          <h2 style={{ textAlign: 'center', color: 'white' }}>Airing Today</h2>
+          <Slider {...sliderSettings}>{renderTvShows(airingtoday)}</Slider>
         </>
       )}
     </div>
   )
 }
 
-export default Movies
+export default TvShows
