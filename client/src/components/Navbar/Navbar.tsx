@@ -6,7 +6,7 @@ import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {  Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
-
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 const Navbar: React.FC = () => {
   return (
     <>
@@ -61,7 +61,7 @@ const Navbar: React.FC = () => {
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span className="navbar-toggler-icon" />
+              <span className="navbar-toggler-icon"  />
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav ms-lg-auto">
@@ -70,41 +70,24 @@ const Navbar: React.FC = () => {
                     HomePage
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link className="nav-link active" to="./movies" style= {{color:'white'}}>
+                    Movies
+                  </Link>
+                </li>
 
-                <li className="nav-item dropdown">
-                  <a
-                    className="nav-link dropdown"
-                    href="#"
-                    id="navbarLightDropdownMenuLink"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Categories
-                  </a>
-                  <ul
-                    className="dropdown-menu dropdown-menu-light"
-                    aria-labelledby="navbarLightDropdownMenuLink"
-                  >
-                    <li>
-                      <Link to="/movies" className="dropdown-item">
-                        Movies
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/series" className="dropdown-item">
-                        Tv Series
-                      </Link>
-                    </li>
-                  </ul>
+                <li className="nav-item">
+                  <Link className="nav-link active" to="./series" style= {{color:'white'}}>
+                  Series
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/Contact">
                     Contact
                   </Link>
                 </li>
-              </ul>
-              <div className="ms-4">
+             
+              <div className="ms-4" >
                 <Link
                   to="/Login"
                   className="btn custom-btn custom-border-btn smoothscroll"
@@ -119,7 +102,8 @@ const Navbar: React.FC = () => {
                 >
                   <FontAwesomeIcon icon={faUser} />
                 </Link>
-              </div>
+              </div> 
+              </ul>
             </div>
           </div>
         </nav>

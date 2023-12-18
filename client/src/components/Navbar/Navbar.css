@@ -8,7 +8,7 @@
   padding-top: 20px;
   padding-bottom: 20px;
 
-    linear-gradient(#ffffff, #348cd2);
+ linear-gradient:(#ffffff, #348cd2);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -181,7 +181,7 @@
   padding: 0;
   cursor: pointer;
   margin: 0;
-  width: 30px;
+  width: 50px;
   height: 35px;
   outline: none;
 }
@@ -303,7 +303,7 @@
   background: var(--secondary-color);
   border-color: var(--secondary-color);
   max-width: 50px;
-  height: 100%;
+  height: 50px;
   padding-left: 15px;
 }
 
@@ -312,9 +312,12 @@
 }
 @media screen and (max-width: 991px) {
   .navbar-nav {
-    background-color: var(--primary-color);
+    background-color: rgb(33, 23, 43);
     border-radius: var(--border-radius-medium);
-    padding: 30px;
+   
+    text-align: center;
+    margin:10px 50px;
+   
   }
 
   .navbar-nav .nav-link {
