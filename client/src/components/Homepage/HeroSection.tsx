@@ -1,4 +1,4 @@
-/*import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Slider from 'react-slick'
 import { Link } from 'react-router-dom'
@@ -106,4 +106,4 @@ const HeroSection: React.FC = () => {
 }
 
 export default HeroSection
-*/
+

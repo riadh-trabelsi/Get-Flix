@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './Navbar.css'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -7,7 +7,19 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {  Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import SearchBar from './SearchBar'
+import SearchResultsSection from '../Homepage/SearchResultsSection'
 const Navbar: React.FC = () => {
+  const [currentPage, setCurrentPage] = useState<string>('homepage')
+  const [searchResults, setSearchResults] = useState<any[]>([])
+
+  const handlePageChange = (newPage: string) => {
+    setCurrentPage(newPage)
+  }
+
+  const handleSearch = (results: any[]) => {
+    setSearchResults(results)
+  }
   return (
     <>
       <div>
@@ -31,27 +43,11 @@ const Navbar: React.FC = () => {
                 alt="templatemo pod talk"
               />
             </a>
-            <form
-              action="#"
-              method="get"
-              className="custom-form search-form flex-fill me-3"
-              role="search"
-              id="search_form"
-            >
-              <div className="input-group input-group-lg">
-                <input
-                  name="search"
-                  type="search"
-                  className="form-control"
-                  id="search"
-                  placeholder="Search films, series"
-                  aria-label="Search"
-                />
-                <button type="submit" className="form-control" id="submit">
-                  <FontAwesomeIcon icon={faSearch} />
-                </button>
-              </div>
-            </form>
+            <SearchBar
+              onSearchResults={handleSearch}
+              currentPage={currentPage}
+              apiBaseUrl={'http://localhost:5050'} // Replace with your actual API base URL
+            />
             <button
               className="navbar-toggler"
               type="button"
@@ -108,6 +104,7 @@ const Navbar: React.FC = () => {
           </div>
         </nav>
       </div>
+      <SearchResultsSection results={searchResults} />
     </>
   )
 }
