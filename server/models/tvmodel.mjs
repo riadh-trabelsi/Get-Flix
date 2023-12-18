@@ -18,6 +18,10 @@ const tvShowSchema = new mongoose.Schema({
       overview: String,
     },
   ],
+  comments:[{
+    type: mongoose.SchemaTypes.ObjectId, 
+    ref: 'Comment'
+  }],
 })
 
 const TvShowModel = mongoose.model('TvShow', tvShowSchema)

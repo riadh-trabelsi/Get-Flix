@@ -17,9 +17,9 @@ const signup = async (req, res) => {
         const accessToken = createAccessToken(newUser);
 
         res.cookie('jwt', accessToken, {
-            sameSite: "None",
+            //sameSite: "None",
             withCredentials: true,
-            httpOnly: false, //for dev purposes change to true for prod
+            httpOnly: true, //for dev purposes change to true for prod
             maxAge: 2 * 60 * 60 * 1000 //cookie expiry: set to match aT (2Hours)
         });
 
@@ -34,7 +34,7 @@ const signup = async (req, res) => {
     };
 };
 
-const updateUser = async (req, res) => {
+const updateUserInfo = async (req, res) => {
     try{
         const { firstname, lastname, email, password } = req.body;
 
@@ -90,7 +90,7 @@ const deactivateAccount = async (req, res) => {
             }
         );
 
-        if (updateResult.nModified === 1) {
+        if (updateResult.nModified >= 1) {
             return responseHandler.ok(res);
         } else {
             return responseHandler.notFound(res);
@@ -103,6 +103,6 @@ const deactivateAccount = async (req, res) => {
 export {
     signup,
     getUserInfo,
-    updateUser,
+    updateUserInfo,
     deactivateAccount
 }
