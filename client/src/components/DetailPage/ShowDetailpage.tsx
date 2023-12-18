@@ -86,15 +86,15 @@ const TVShowDetailPage: React.FC = () => {
               className="card-body"
               style={{ overflowY: 'auto', maxHeight: '800px' }}
             >
-              <h2>{contentDetails.title}</h2>
+              <h5>{contentDetails.title}</h5>
               <hr />
               <h5> {contentDetails.synopsis}</h5>
               <hr />
-              <h2>Genre: {contentDetails.genres}</h2>
+              <h5>Genre: {contentDetails.genres}</h5>
               <hr />
-              <h2>{contentDetails.releaseDate}</h2>
+              <h5>{contentDetails.releaseDate}</h5>
               <hr />
-              <h2>Rating: {contentDetails.tmdbRating}</h2>
+              <h5>Rating: {contentDetails.tmdbRating}</h5>
               <hr />
               <div
                 className="trailer"
