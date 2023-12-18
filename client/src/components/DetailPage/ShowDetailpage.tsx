@@ -1,10 +1,10 @@
-// TVShowDetailPage.tsx
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 
 interface TVShowDetail {
   // Define the types for the TV show details
+  poster_path: string
 }
 
 const TVShowDetailPage: React.FC = () => {
@@ -55,6 +55,7 @@ const TVShowDetailPage: React.FC = () => {
             className="card d-flex flex-row"
             style={{
               height: '800px',
+              width: '34rem',
               border: '3px solid #32de84',
               borderRadius: '20px',
             }}
@@ -63,8 +64,8 @@ const TVShowDetailPage: React.FC = () => {
               src={`https://image.tmdb.org/t/p/w500/${contentDetails.poster_path}`}
               alt={`${contentDetails.title} Poster`}
               style={{
-                width: '100%',
-                border: '3px solid #32de84',
+                width: 'auto',
+
                 borderRadius: '20px',
               }}
             />
@@ -77,6 +78,7 @@ const TVShowDetailPage: React.FC = () => {
               backgroundColor: 'black',
               color: 'white',
               height: '800px',
+              width: '34rem',
               border: '3px solid #32de84',
               borderRadius: '20px',
               paddingTop: '5%',

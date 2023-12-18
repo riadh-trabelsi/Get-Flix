@@ -92,6 +92,7 @@ tvshowRoutes.get('/details/:id', async (req, res) => {
       genres,
       vote_average: tmdbRating,
       videos,
+      poster_path,
     } = tvDetails
 
     const genresString = genres.map((genre) => genre.name).join(', ')
@@ -106,6 +107,7 @@ tvshowRoutes.get('/details/:id', async (req, res) => {
       genres: genresString,
       tmdbRating,
       trailerKey,
+      poster_path,
     }
     console.log(detailsToSend)
 
@@ -113,9 +115,8 @@ tvshowRoutes.get('/details/:id', async (req, res) => {
       {
         title: title,
         overview: synopsis,
-      
-      }
-      , { trailerKey }
+      },
+      { trailerKey },
     )
     res.json(detailsToSend)
   } catch (error) {

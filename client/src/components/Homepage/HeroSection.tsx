@@ -1,4 +1,5 @@
-/*import React, { useState, useEffect } from 'react'
+// HeroSection.tsx
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Slider from 'react-slick'
 import { Link } from 'react-router-dom'
@@ -6,7 +7,7 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
 interface Movie {
-  id : number
+  id: number
   title: string
   overview: string
   releaseDate: string
@@ -30,7 +31,6 @@ const HeroSection: React.FC = () => {
         )
         setTrending(trendingResponse.data)
 
-        
         const ontheairResponse = await axios.get(
           'http://localhost:5050/homepage/ontheair',
         )
@@ -40,8 +40,6 @@ const HeroSection: React.FC = () => {
           'http://localhost:5050/movies/latest',
         )
         setLatestMovies(latestResponse.data)
-      
-        
       } catch (error) {
         console.error('Error fetching movies:', error)
       } finally {
@@ -51,26 +49,33 @@ const HeroSection: React.FC = () => {
 
     fetchData()
   }, [])
-  const handleMovieClick = (id: number) => {
-    
-    const isMovie = true; 
-    const detailPageRoute = isMovie ? `/movie/${id}` : `/tvshow/${id}`;
-    window.location.href = detailPageRoute;
-  };
 
-  const renderMovies = (movies: Movie[]) => {
+  const handleMovieClick = (id: number, isMovie: boolean) => {
+    const detailPageRoute = isMovie ? `/movie/${id}` : `/tvshow/${id}`
+    window.location.href = detailPageRoute
+  }
+
+  const renderMovies = (movies: Movie[], isMovie: boolean) => {
     return movies.map((movie) => (
-      <div key={movie.poster_path} className="movie-slide" onClick={() => handleMovieClick(movie.id)}
+      <div
+        key={movie.poster_path}
+        className="movie-slide"
+        onClick={() => handleMovieClick(movie.id, isMovie)}
       >
- <Link to="/detailpage/${movie.id}">
-        <img
-          src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-          alt={`${movie.title} Poster`}
-          style={{ width: '70%', height: 'auto', border: '3px solid #32de84',  borderRadius: '20px', marginLeft:'10%' }}
-        />
+        <Link to={isMovie ? `/movie/${movie.id}` : `/tvshow/${movie.id}`}>
+          <img
+            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+            alt={`${movie.title} Poster`}
+            style={{
+              width: '70%',
+              height: 'auto',
+              border: '3px solid #32de84',
+              borderRadius: '20px',
+              marginLeft: '10%',
+            }}
+          />
         </Link>
       </div>
-      
     ))
   }
 
@@ -83,22 +88,31 @@ const HeroSection: React.FC = () => {
     autoplaySpeed: 3000,
     arrows: true,
   }
+
   return (
     <div>
       {loading ? (
         <p>Loading...</p>
       ) : (
         <>
-        <hr />  <h1 style={{textAlign:'center', color:'white'}}>Trending</h1><br />
-          <Slider {...sliderSettings}>{renderMovies(trending)}</Slider>
+          <hr />
+          <h1 style={{ textAlign: 'center', color: 'white' }}>Trending</h1>
+          <br />
+          <Slider {...sliderSettings}>{renderMovies(trending, true)}</Slider>
 
-          <hr /><h1 style={{textAlign:'center', color:'white'}}>Now Playing</h1><br />
-          <Slider {...sliderSettings}>{renderMovies(latestMovies)}</Slider>
+          <hr />
+          <h1 style={{ textAlign: 'center', color: 'white' }}>Now Playing</h1>
+          <br />
+          <Slider {...sliderSettings}>
+            {renderMovies(latestMovies, true)}
+          </Slider>
 
-          
-          <hr /><h1 style={{textAlign:'center', color:'white'}}>On the Air TV Shows</h1><br />
-          <Slider {...sliderSettings}>{renderMovies(ontheair)}</Slider>
-          
+          <hr />
+          <h1 style={{ textAlign: 'center', color: 'white' }}>
+            On the Air TV Shows
+          </h1>
+          <br />
+          <Slider {...sliderSettings}>{renderMovies(ontheair, false)}</Slider>
         </>
       )}
     </div>
@@ -106,4 +120,3 @@ const HeroSection: React.FC = () => {
 }
 
 export default HeroSection
-*/
