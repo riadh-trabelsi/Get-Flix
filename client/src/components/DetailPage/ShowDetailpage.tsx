@@ -50,12 +50,11 @@ const TVShowDetailPage: React.FC = () => {
         className="row justify-content-center "
         style={{ margin: 0, padding: 0 }}
       >
-        <div className="col-lg-6 col-sm-12 col-md-6" style={{ padding: 0 }}>
+        <div className="col-lg-4 col-sm-12 col-md-6" style={{ padding: 0 }}>
           <div
             className="card d-flex flex-row"
             style={{
               height: '800px',
-              width: '34rem',
               border: '3px solid #32de84',
               borderRadius: '20px',
             }}
@@ -64,8 +63,8 @@ const TVShowDetailPage: React.FC = () => {
               src={`https://image.tmdb.org/t/p/w500/${contentDetails.poster_path}`}
               alt={`${contentDetails.title} Poster`}
               style={{
-                width: 'auto',
-
+                width: '100%',
+                border: '3px solid #32de84',
                 borderRadius: '20px',
               }}
             />
@@ -78,7 +77,6 @@ const TVShowDetailPage: React.FC = () => {
               backgroundColor: 'black',
               color: 'white',
               height: '800px',
-              width: '34rem',
               border: '3px solid #32de84',
               borderRadius: '20px',
               paddingTop: '5%',

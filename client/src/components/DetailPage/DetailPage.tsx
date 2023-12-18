@@ -48,7 +48,7 @@ const MovieDetailPage: React.FC = () => {
         className="row justify-content-center "
         style={{ margin: 0, padding: 0 }}
       >
-        <div className="col-lg-6 col-sm-12 col-md-6" style={{ padding: 0 }}>
+        <div className="col-lg-4 col-sm-12 col-md-6" style={{ padding: 0 }}>
           <div
             className="card d-flex flex-row"
             style={{

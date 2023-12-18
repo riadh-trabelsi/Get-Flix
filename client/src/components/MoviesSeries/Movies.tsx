@@ -20,6 +20,7 @@ const Movies: React.FC = () => {
   const [latestMovies, setLatestMovies] = useState<Movie[]>([])
   const [popularMovies, setPopularMovies] = useState<Movie[]>([])
   const [upcomingMovies, setUpcomingMovies] = useState<Movie[]>([])
+
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
