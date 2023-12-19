@@ -110,7 +110,6 @@
   line-height: 30px;
   margin-top: 5px;
   margin-bottom: 5px;
- 
 }
 
 .custom-block .custom-block-info + div .badge:hover {
@@ -120,7 +119,6 @@
 .custom-block-full {
   background-color: var(--section-bg-color);
   border-color: transparent;
-  
 }
 
 .custom-block-full:hover {
@@ -201,11 +199,15 @@
   }
 }
 .custom-block-image {
-  height: 300px; / Ajustez la hauteur en fonction de vos besoins /
-  object-fit: cover;
+  height: 300px;
+  / Ajustez la hauteur en fonction de vos besoins / .custom-block {
+    width: 100%; /* Ajustez la largeur en fonction de vos besoins */
+    overflow: hidden;
+  }
 }
 
-.custom-block {
-  width: 100%; / Ajustez la largeur en fonction de vos besoins /
-  overflow: hidden; 
+/* BEGIN: ed8c6549bwf9 */
+.custom-block-image {
+  object-fit: cover;
 }
+/* END: ed8c6549bwf9 */
