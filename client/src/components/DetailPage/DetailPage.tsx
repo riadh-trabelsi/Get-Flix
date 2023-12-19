@@ -4,6 +4,16 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom'
 
 interface MovieDetail {
+  id: Number
+  title: String
+  synopsis: String
+  release_date: Date
+  genre_ids: [Number]
+  poster_path: String
+  genres: String
+  tmdbRating: Number
+  trailerKey: String
+  releaseDate: string
   // Define the types for the movie details
 }
 
@@ -21,7 +31,7 @@ const MovieDetailPage: React.FC = () => {
         setContentDetails(response.data)
       } catch (error) {
         console.error('Error fetching content details:', error)
-        setError(error)
+        setError(error as Error)
       } finally {
         setLoading(false)
       }
@@ -92,7 +102,7 @@ const MovieDetailPage: React.FC = () => {
               <hr />
               <h5>{contentDetails.releaseDate}</h5>
               <hr />
-              <h5>Rating: {contentDetails.tmdbRating}</h5>
+              <h5> Rating: {`${contentDetails.tmdbRating}`}</h5>
               <hr />
               <div
                 className="trailer"

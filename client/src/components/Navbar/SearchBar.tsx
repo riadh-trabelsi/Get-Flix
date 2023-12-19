@@ -1,10 +1,11 @@
+// SearchBar.tsx
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import './Navbar.css'
 
 interface SearchBarProps {
-  onSearchResults: (results: any[]) => void
+  onSearchResults: (results: any[], currentPage: string) => void // Updated prop signature
   currentPage: string
   apiBaseUrl: string
 }
@@ -12,14 +13,22 @@ interface SearchBarProps {
 const SearchBar: React.FC<SearchBarProps> = ({
   onSearchResults,
   currentPage,
-  apiBaseUrl,
 }) => {
   const [query, setQuery] = useState<string>('')
+  const apiBaseUrl = 'http://localhost:5050'
 
   const handleSearch = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    const apiEndpoint = `${apiBaseUrl}/${currentPage}/search/${query}`
+    // Construct the API endpoint based on the current page
+    let apiEndpoint = ''
+    if (currentPage === 'movies') {
+      apiEndpoint = `${apiBaseUrl}/movies/searchmovie/${query}`
+    } else if (currentPage === 'series') {
+      apiEndpoint = `${apiBaseUrl}/tvshows/searchtv/${query}`
+    } else if (currentPage === 'homepage') {
+      apiEndpoint = `${apiBaseUrl}/homepage/search/${query}`
+    }
 
     if (!apiEndpoint) {
       console.error('Invalid current page')
@@ -38,7 +47,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
         const data = await response.json()
 
         if (typeof onSearchResults === 'function') {
-          onSearchResults(data)
+          onSearchResults(data, currentPage) // Pass currentPage to the callback
         } else {
           console.error('onSearchResults is not a function')
         }

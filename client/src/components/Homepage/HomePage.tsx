@@ -1,15 +1,20 @@
 import React from 'react'
 import SearchResultsSection from './SearchResultsSection.tsx'
 import HeroSection from './HeroSection.tsx'
-import LatestPodcastSection from './LatestPodcastSection.tsx'
 import TopicsSection from './TopicsSection.tsx'
 import TrendingPodcastSection from './TrendingPodcastSection.tsx'
-import MainCarousel from './MainCarousel.tsx'
 
 const HomePage: React.FC = () => {
   return (
     <>
-      <SearchResultsSection results={[]} />
+      <SearchResultsSection
+        results={[]}
+        searchMade={false}
+        currentPage={''}
+        onSearchResultClick={function (_id: number, _type: string): void {
+          throw new Error('Function not implemented.')
+        }}
+      />
       <TopicsSection />
       <HeroSection />
 

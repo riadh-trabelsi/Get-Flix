@@ -4,7 +4,16 @@ import { useParams } from 'react-router-dom'
 
 interface TVShowDetail {
   // Define the types for the TV show details
-  poster_path: string
+  id: Number
+  title: String
+  synopsis: String
+  release_date: Date
+  genre_ids: [Number]
+  poster_path: String
+  genres: String
+  tmdbRating: Number
+  trailerKey: String
+  releaseDate: string
 }
 
 const TVShowDetailPage: React.FC = () => {
@@ -23,7 +32,7 @@ const TVShowDetailPage: React.FC = () => {
         setContentDetails(response.data)
       } catch (error) {
         console.error('Error fetching content details:', error)
-        setError(error)
+        setError(error as Error)
       } finally {
         setLoading(false)
       }
@@ -94,7 +103,7 @@ const TVShowDetailPage: React.FC = () => {
               <hr />
               <h5>{contentDetails.releaseDate}</h5>
               <hr />
-              <h5>Rating: {contentDetails.tmdbRating}</h5>
+              <h5>Rating: {`${contentDetails.tmdbRating}`}</h5>
               <hr />
               <div
                 className="trailer"
