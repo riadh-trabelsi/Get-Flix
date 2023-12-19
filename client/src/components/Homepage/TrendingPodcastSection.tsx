@@ -1,39 +1,42 @@
 // TrendingPodcastSection.tsx
-import React, { useEffect, useState } from 'react';
-import axios from 'axios'; // Import axios
+import React, { useEffect, useState } from 'react'
+import axios from 'axios' // Import axios
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
 interface Actor {
-  name: string;
-  profile_path: string;
-  known_for_department: string;
+  name: string
+  profile_path: string
+  known_for_department: string
   // Add other necessary properties
 }
 
 const TrendingPodcastSection: React.FC = () => {
-  const [popularActors, setPopularActors] = useState<Actor[]>([]);
+  const [popularActors, setPopularActors] = useState<Actor[]>([])
 
   useEffect(() => {
     const fetchActors = async () => {
       try {
         const actorsResponse = await axios.get(
-          'http://localhost:5050/homepage/actors',
-        );
-        setPopularActors(actorsResponse.data);
+          'https://viewtopia-zlcc.onrender.com/homepage/actors',
+        )
+        setPopularActors(actorsResponse.data)
       } catch (error) {
-        console.error('Error fetching actors:', error);
+        console.error('Error fetching actors:', error)
       }
-    };
+    }
 
-    fetchActors(); // Call the fetchActors function
-  }, []);
+    fetchActors() // Call the fetchActors function
+  }, [])
 
   return (
     <section className="trending-podcast-section section-padding">
-   
       <div className="container">
-     <hr /> <h1 style={{textAlign:'center',color:'white'}}>Populars Actors </h1><br />
+        <hr />{' '}
+        <h1 style={{ textAlign: 'center', color: 'white' }}>
+          Populars Actors{' '}
+        </h1>
+        <br />
         <div className="row">
           {popularActors.map((actor, index) => (
             <div className="col-lg-4 col-12 mb-4 mb-lg-0" key={index}>
@@ -49,12 +52,10 @@ const TrendingPodcastSection: React.FC = () => {
                 </div>
 
                 <div className="custom-block-info">
-                  <h5 className="mb-2" style={{color:'black'}}>
+                  <h5 className="mb-2" style={{ color: 'black' }}>
                     {actor.name} <hr />
                     Known for {actor.known_for_department}
-
                   </h5>
-
                 </div>
               </div>
             </div>
@@ -62,7 +63,7 @@ const TrendingPodcastSection: React.FC = () => {
         </div>
       </div>
     </section>
-  );
+  )
 }
 
-export default TrendingPodcastSection;
+export default TrendingPodcastSection
