@@ -19,14 +19,11 @@ import {
 const PORT = process.env.PORT || 5050
 const NODE_ENV = process.env.NODE_ENV || 'development'
 const app = express()
-const corsOptions = {
-  origin: 'https://viewtopiafront.onrender.com',
-}
 
 app.use(cookieParser())
 app.use(
   cors({
-    origin: 'http://localhost:5173',
+    origin: 'https://viewtopiafront.onrender.com',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
   }),
