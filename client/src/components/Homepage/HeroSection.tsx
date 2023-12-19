@@ -1,10 +1,9 @@
-// HeroSection.tsx
-import React, { useState, useEffect } from 'react'
+/*import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import Slider from 'react-slick'
 import { Link } from 'react-router-dom'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
+import ReactPaginate from 'react-paginate'
+import './Movies.css' // Assuming you have a CSS file for styling
+
 
 interface Movie {
   id: number
@@ -19,18 +18,14 @@ interface Movie {
 
 const HeroSection: React.FC = () => {
   const [latestMovies, setLatestMovies] = useState<Movie[]>([])
-  const [trending, setTrending] = useState<Movie[]>([])
+  
   const [ontheair, setOntheair] = useState<Movie[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const trendingResponse = await axios.get(
-          'http://localhost:5050/homepage/trending',
-        )
-        setTrending(trendingResponse.data)
-
+        
         const ontheairResponse = await axios.get(
           'http://localhost:5050/homepage/ontheair',
         )
@@ -98,9 +93,7 @@ const HeroSection: React.FC = () => {
           <hr />
           <h1 style={{ textAlign: 'center', color: 'white' }}>Trending</h1>
           <br />
-          <Slider {...sliderSettings}>{renderMovies(trending, true)}</Slider>
 
-          <hr />
           <h1 style={{ textAlign: 'center', color: 'white' }}>Now Playing</h1>
           <br />
           <Slider {...sliderSettings}>
@@ -120,3 +113,4 @@ const HeroSection: React.FC = () => {
 }
 
 export default HeroSection
+*/

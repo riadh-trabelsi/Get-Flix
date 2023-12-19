@@ -25,6 +25,8 @@ const Signup: React.FC = () => {
     fetchData()
   }, [])
 
+  console.log('Data:', data)
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
@@ -111,7 +113,7 @@ const Signup: React.FC = () => {
                     onChange={handleChange}
                   />
                 </div>
-<br />
+                <br />
                 <div className="d-grid mb-2">
                   <button
                     className="btn btn-lg btn-primary btn-login fw-bold "

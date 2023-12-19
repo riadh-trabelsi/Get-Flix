@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import Slider from 'react-slick'
 import { Link } from 'react-router-dom'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
+import ReactPaginate from 'react-paginate'
+import './Movies.css' // Assuming you have a CSS file for styling
 
 interface Movie {
   id: number
@@ -20,8 +19,14 @@ const Movies: React.FC = () => {
   const [latestMovies, setLatestMovies] = useState<Movie[]>([])
   const [popularMovies, setPopularMovies] = useState<Movie[]>([])
   const [upcomingMovies, setUpcomingMovies] = useState<Movie[]>([])
-
   const [loading, setLoading] = useState(true)
+
+  // Pagination state
+  const [currentPageLatest, setCurrentPageLatest] = useState(0)
+  const [currentPagePopular, setCurrentPagePopular] = useState(0)
+  const [currentPageUpcoming, setCurrentPageUpcoming] = useState(0)
+
+  const moviesPerPage = 5 // Adjust as needed
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,44 +55,52 @@ const Movies: React.FC = () => {
     fetchData()
   }, [])
 
-  const handleMovieClick = (id: number) => {
-    const isMovie = true
-    const detailPageRoute = isMovie ? `/movie/${id}` : `/tvshow/${id}`
-    window.location.href = detailPageRoute
+  const handlePageClickLatest = ({ selected }: { selected: number }) => {
+    setCurrentPageLatest(selected)
   }
 
-  const renderMovies = (movies: Movie[]) => {
-    return movies.map((movie) => (
-      <div
-        key={movie.poster_path}
-        className="movie-slide"
-        onClick={() => handleMovieClick(movie.id)}
-      >
-        <Link to="/movie/${movie.id}">
-          <img
-            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-            alt={`${movie.title} Poster`}
-            style={{
-              width: '70%',
-              height: 'auto',
-              border: '3px solid #32de84',
-              borderRadius: '20px',
-              marginLeft: '10%',
-            }}
-          />
-        </Link>
+  const handlePageClickPopular = ({ selected }: { selected: number }) => {
+    setCurrentPagePopular(selected)
+  }
+
+  const handlePageClickUpcoming = ({ selected }: { selected: number }) => {
+    setCurrentPageUpcoming(selected)
+  }
+
+  const renderPaginatedMovies = (movies: Movie[], currentPage: number) => {
+    const startIndex = currentPage * moviesPerPage
+    const slicedMovies = movies.slice(startIndex, startIndex + moviesPerPage)
+
+    const handleMovieClick = (id: number) => {
+      const isMovie = true
+      const detailPageRoute = isMovie ? `/movie/${id}` : `/tvshow/${id}`
+      window.location.href = detailPageRoute
+    }
+
+    return (
+      <div className="movies-container">
+        {slicedMovies.map((movie) => (
+          <div
+            key={movie.poster_path}
+            className="movie-card"
+            onClick={() => handleMovieClick(movie.id)}
+          >
+            <Link to={`/movie/${movie.id}`}>
+              <img
+                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                alt={`${movie.title} Poster`}
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  border: '3px solid #32de84',
+                  borderRadius: '20px',
+                }}
+              />
+            </Link>
+          </div>
+        ))}
       </div>
-    ))
-  }
-
-  const sliderSettings = {
-    infinite: true,
-    slidesToShow: 5,
-    slidesToScroll: 1,
-    autoplay: true,
-    speed: 1500,
-    autoplaySpeed: 3000,
-    arrows: true,
+    )
   }
 
   return (
@@ -97,19 +110,48 @@ const Movies: React.FC = () => {
       ) : (
         <>
           <h2 style={{ textAlign: 'center', color: 'white' }}>Latest Movies</h2>
-          <Slider {...sliderSettings}>{renderMovies(latestMovies)}</Slider>
+          {renderPaginatedMovies(latestMovies, currentPageLatest)}
+
+          <ReactPaginate
+            pageCount={Math.ceil(latestMovies.length / moviesPerPage)}
+            pageRangeDisplayed={2}
+            marginPagesDisplayed={1}
+            onPageChange={handlePageClickLatest}
+            containerClassName="pagination"
+            activeClassName="active"
+          />
 
           <hr />
           <h2 style={{ textAlign: 'center', color: 'white' }}>
             Popular Movies
           </h2>
-          <Slider {...sliderSettings}>{renderMovies(popularMovies)}</Slider>
+          {renderPaginatedMovies(popularMovies, currentPagePopular)}
+
+          <ReactPaginate
+            pageCount={Math.ceil(popularMovies.length / moviesPerPage)}
+            pageRangeDisplayed={2}
+            marginPagesDisplayed={1}
+            onPageChange={handlePageClickPopular}
+            containerClassName="pagination"
+            activeClassName="active"
+          />
 
           <hr />
           <h2 style={{ textAlign: 'center', color: 'white' }}>
             Upcoming Movies
           </h2>
-          <Slider {...sliderSettings}>{renderMovies(upcomingMovies)}</Slider>
+          {renderPaginatedMovies(upcomingMovies, currentPageUpcoming)}
+
+          <ReactPaginate
+            pageCount={Math.ceil(upcomingMovies.length / moviesPerPage)}
+            pageRangeDisplayed={2}
+            marginPagesDisplayed={1}
+            onPageChange={handlePageClickUpcoming}
+            containerClassName="pagination"
+            activeClassName="active"
+            previousLabel="Previous"
+            nextLabel="Next"
+          />
         </>
       )}
     </div>

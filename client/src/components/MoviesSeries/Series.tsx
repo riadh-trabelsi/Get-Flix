@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import Slider from 'react-slick'
 import { Link } from 'react-router-dom'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
+import ReactPaginate from 'react-paginate'
+import './Movies.css'
 
 interface TvShow {
   id: number
@@ -23,6 +22,12 @@ const TvShows: React.FC = () => {
   const [airingtoday, setAiringToday] = useState<TvShow[]>([])
   const [loading, setLoading] = useState(true)
 
+  const [currentPageTopRated, setCurrentPageTopRated] = useState(0)
+  const [currentPagePopular, setCurrentPagePopular] = useState(0)
+  const [currentPageAiringToday, setCurrentPageAiringToday] = useState(0)
+
+  const tvPerPage = 5
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -41,7 +46,7 @@ const TvShows: React.FC = () => {
         )
         setAiringToday(airingtodayResponse.data)
       } catch (error) {
-        console.error('Error fetching movies:', error)
+        console.error('Error fetching TV shows:', error)
       } finally {
         setLoading(false)
       }
@@ -50,44 +55,52 @@ const TvShows: React.FC = () => {
     fetchData()
   }, [])
 
+  const handlePageClickTopRated = ({ selected }: { selected: number }) => {
+    setCurrentPageTopRated(selected)
+  }
+
+  const handlePageClickPopular = ({ selected }: { selected: number }) => {
+    setCurrentPagePopular(selected)
+  }
+
+  const handlePageClickAiringToday = ({ selected }: { selected: number }) => {
+    setCurrentPageAiringToday(selected)
+  }
+
+  const renderPaginatedTvShows = (tvshows: TvShow[], currentPage: number) => {
+    const startIndex = currentPage * tvPerPage
+    const slicedTvShows = tvshows.slice(startIndex, startIndex + tvPerPage)
+
+    return (
+      <div className="movies-container">
+        {slicedTvShows.map((tvshow) => (
+          <div
+            key={tvshow.poster_path}
+            className="movie-card"
+            onClick={() => handleTvShowClick(tvshow.id)}
+          >
+            <Link to={`/tvshow/${tvshow.id}`}>
+              <img
+                src={`https://image.tmdb.org/t/p/w500/${tvshow.poster_path}`}
+                alt={`${tvshow.title} Poster`}
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  border: '3px solid #32de84',
+                  borderRadius: '20px',
+                }}
+              />
+            </Link>
+          </div>
+        ))}
+      </div>
+    )
+  }
+
   const handleTvShowClick = (id: number) => {
     const isMovie = false
     const TvDetailPageRoute = isMovie ? `/movie/${id}` : `/tvshow/${id}`
     window.location.href = TvDetailPageRoute
-  }
-
-  const renderTvShows = (tvShows: TvShow[]) => {
-    return tvShows.map((tvShow) => (
-      <div
-        key={tvShow.poster_path}
-        className="tv-show-slide"
-        onClick={() => handleTvShowClick(tvShow.id)}
-      >
-        <Link to={`/tvshow/${tvShow.id}`}>
-          <img
-            src={`https://image.tmdb.org/t/p/w500/${tvShow.poster_path}`}
-            alt={`${tvShow.title} Poster`}
-            style={{
-              width: '70%',
-              height: 'auto',
-              border: '3px solid #32de84',
-              borderRadius: '20px',
-              marginLeft: '10%',
-            }}
-          />
-        </Link>
-      </div>
-    ))
-  }
-
-  const sliderSettings = {
-    infinite: true,
-    slidesToShow: 5,
-    slidesToScroll: 1,
-    autoplay: true,
-    speed: 1500,
-    autoplaySpeed: 3000,
-    arrows: true,
   }
 
   return (
@@ -99,17 +112,44 @@ const TvShows: React.FC = () => {
           <h2 style={{ textAlign: 'center', color: 'white' }}>
             Top Rated TV Shows
           </h2>
-          <Slider {...sliderSettings}>{renderTvShows(toprated)}</Slider>
+          {renderPaginatedTvShows(toprated, currentPageTopRated)}
+
+          <ReactPaginate
+            pageCount={Math.ceil(toprated.length / tvPerPage)}
+            pageRangeDisplayed={2}
+            marginPagesDisplayed={1}
+            onPageChange={handlePageClickTopRated}
+            containerClassName="pagination"
+            activeClassName="active"
+          />
 
           <hr />
           <h2 style={{ textAlign: 'center', color: 'white' }}>
             Popular TV Shows
           </h2>
-          <Slider {...sliderSettings}>{renderTvShows(popular)}</Slider>
+          {renderPaginatedTvShows(popular, currentPagePopular)}
+
+          <ReactPaginate
+            pageCount={Math.ceil(popular.length / tvPerPage)}
+            pageRangeDisplayed={2}
+            marginPagesDisplayed={1}
+            onPageChange={handlePageClickPopular}
+            containerClassName="pagination"
+            activeClassName="active"
+          />
 
           <hr />
           <h2 style={{ textAlign: 'center', color: 'white' }}>Airing Today</h2>
-          <Slider {...sliderSettings}>{renderTvShows(airingtoday)}</Slider>
+          {renderPaginatedTvShows(airingtoday, currentPageAiringToday)}
+
+          <ReactPaginate
+            pageCount={Math.ceil(airingtoday.length / tvPerPage)}
+            pageRangeDisplayed={2}
+            marginPagesDisplayed={1}
+            onPageChange={handlePageClickAiringToday}
+            containerClassName="pagination"
+            activeClassName="active"
+          />
         </>
       )}
     </div>
