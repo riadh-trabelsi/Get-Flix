@@ -15,13 +15,16 @@ const Login: React.FC = () => {
     try {
       setLoading(true)
 
-      const response = await fetch('http://localhost:5050/api/sessionRoutes', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        'https://viewtopia-zlcc.onrender.com/api/sessionRoutes',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email, password }),
         },
-        body: JSON.stringify({ email, password }),
-      })
+      )
 
       if (!response.ok) {
         throw new Error('Login failed')
