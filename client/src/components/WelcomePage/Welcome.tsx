@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom'
 import './Welcome.css'
 
 import comedy2 from '../../../images/comedy2.avif'
+import spider1 from '../../../images/spider1.jpeg'
+import avatar2 from '../../../images/avatar2.jpg'
+import comedy from '../../../images/comedy.jpg'
 
 const Welcome: React.FC = () => {
   return (
@@ -241,7 +244,7 @@ const Welcome: React.FC = () => {
               <div className="custom-block custom-block-overlay">
                 <Link to="/" className="custom-block-image-wrap">
                   <img
-                    src="images/avatar2.jpg"
+                    src={avatar2}
                     className="custom-block-image img-fluid"
                     alt="Repairman doing air conditioner service"
                   />
@@ -257,7 +260,7 @@ const Welcome: React.FC = () => {
               <div className="custom-block custom-block-overlay">
                 <Link to="/" className="custom-block-image-wrap">
                   <img
-                    src="images/spider1.jpeg"
+                    src={spider1}
                     className="custom-block-image img-fluid"
                     alt="Woman practicing yoga at home"
                   />
@@ -273,7 +276,7 @@ const Welcome: React.FC = () => {
               <div className="custom-block custom-block-overlay">
                 <Link to="/" className="custom-block-image-wrap">
                   <img
-                    src="images/comedy.jpg"
+                    src={comedy}
                     className="custom-block-image img-fluid"
                     alt="Delicious meal with sambal arrangement"
                   />
