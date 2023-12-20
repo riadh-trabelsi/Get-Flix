@@ -2,7 +2,8 @@ import React from 'react'
 
 import { Link } from 'react-router-dom'
 import './Welcome.css'
-import '../../../images/comedy2.avif'
+
+import comedy2 from '../../../images/comedy2.avif'
 
 const Welcome: React.FC = () => {
   return (
@@ -222,7 +223,7 @@ const Welcome: React.FC = () => {
               <div className="custom-block custom-block-overlay">
                 <Link to="/" className="custom-block-image-wrap">
                   <img
-                    src="../../../images/comedy2.avif"
+                    src={comedy2}
                     className="custom-block-image img-fluid"
                     alt="none"
                   />
