@@ -77,27 +77,23 @@ const Movies: React.FC = () => {
       ) : (
         <>
           <div className="category-container">
+            <h2 className="category-title">Upcoming Movies</h2>
+            <div className="movies-container-horizontal">
+              {renderMovies(upcomingMovies)}
+            </div>
+          </div>
+
+          <div className="category-container">
             <h2 className="category-title">Latest Movies</h2>
             <div className="movies-container-horizontal">
               {renderMovies(latestMovies)}
             </div>
           </div>
 
-          <hr className="divider" />
-
           <div className="category-container">
             <h2 className="category-title">Popular Movies</h2>
             <div className="movies-container-horizontal">
               {renderMovies(popularMovies)}
-            </div>
-          </div>
-
-          <hr className="divider" />
-
-          <div className="category-container">
-            <h2 className="category-title">Upcoming Movies</h2>
-            <div className="movies-container-horizontal">
-              {renderMovies(upcomingMovies)}
             </div>
           </div>
         </>
