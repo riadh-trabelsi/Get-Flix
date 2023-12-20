@@ -1,3 +1,29 @@
+.movies-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.category-container {
+  margin: 20px;
+}
+
+.category-title {
+  text-align: center;
+  color: white;
+}
+
+.movie-card {
+  cursor: pointer;
+}
+
+.movie-card img {
+  width: 150px;
+  height: auto;
+  border: 3px solid #32de84;
+  border-radius: 20px;
+}
+
 .movies-container-horizontal {
   display: flex;
   overflow-x: auto;
