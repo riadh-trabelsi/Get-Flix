@@ -32,7 +32,7 @@ const Movies: React.FC = () => {
     const fetchData = async () => {
       try {
         const latestResponse = await axios.get(
-          'https://viewtopia-zlcc.onrender.com//movies/latest',
+          'https://viewtopia-zlcc.onrender.com/movies/latest',
         )
         setLatestMovies(latestResponse.data)
 
