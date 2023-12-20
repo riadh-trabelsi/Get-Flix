@@ -1,4 +1,3 @@
-// TrendingPodcastSection.tsx
 import React, { useEffect, useState } from 'react'
 import axios from 'axios' // Import axios
 import 'slick-carousel/slick/slick.css'
@@ -8,7 +7,6 @@ interface Actor {
   name: string
   profile_path: string
   known_for_department: string
-  // Add other necessary properties
 }
 
 const TrendingPodcastSection: React.FC = () => {
@@ -26,7 +24,7 @@ const TrendingPodcastSection: React.FC = () => {
       }
     }
 
-    fetchActors() // Call the fetchActors function
+    fetchActors()
   }, [])
 
   return (

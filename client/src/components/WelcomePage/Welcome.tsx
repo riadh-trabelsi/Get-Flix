@@ -2,6 +2,7 @@ import React from 'react'
 
 import { Link } from 'react-router-dom'
 import './Welcome.css'
+
 const Welcome: React.FC = () => {
   return (
     <>
@@ -220,9 +221,9 @@ const Welcome: React.FC = () => {
               <div className="custom-block custom-block-overlay">
                 <Link to="/" className="custom-block-image-wrap">
                   <img
-                    src="../../images/comedy2.avif"
+                    src="../../../images/comedy2.avif"
                     className="custom-block-image img-fluid"
-                    alt="Physician consulting his patient in a clinic"
+                    alt="none"
                   />
                 </Link>
 
