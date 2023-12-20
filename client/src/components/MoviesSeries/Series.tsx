@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import ReactPaginate from 'react-paginate'
-import './Movies.css'
+import './Movies.css' // Add your own CSS file for styling
 
 interface TvShow {
   id: number
@@ -21,12 +20,6 @@ const TvShows: React.FC = () => {
   const [popular, setPopular] = useState<TvShow[]>([])
   const [airingtoday, setAiringToday] = useState<TvShow[]>([])
   const [loading, setLoading] = useState(true)
-
-  const [currentPageTopRated, setCurrentPageTopRated] = useState(0)
-  const [currentPagePopular, setCurrentPagePopular] = useState(0)
-  const [currentPageAiringToday, setCurrentPageAiringToday] = useState(0)
-
-  const tvPerPage = 5
 
   useEffect(() => {
     const fetchData = async () => {
@@ -55,25 +48,10 @@ const TvShows: React.FC = () => {
     fetchData()
   }, [])
 
-  const handlePageClickTopRated = ({ selected }: { selected: number }) => {
-    setCurrentPageTopRated(selected)
-  }
-
-  const handlePageClickPopular = ({ selected }: { selected: number }) => {
-    setCurrentPagePopular(selected)
-  }
-
-  const handlePageClickAiringToday = ({ selected }: { selected: number }) => {
-    setCurrentPageAiringToday(selected)
-  }
-
-  const renderPaginatedTvShows = (tvshows: TvShow[], currentPage: number) => {
-    const startIndex = currentPage * tvPerPage
-    const slicedTvShows = tvshows.slice(startIndex, startIndex + tvPerPage)
-
+  const renderTvShows = (tvshows: TvShow[]) => {
     return (
       <div className="movies-container">
-        {slicedTvShows.map((tvshow) => (
+        {tvshows.map((tvshow) => (
           <div
             key={tvshow.poster_path}
             className="movie-card"
@@ -104,52 +82,35 @@ const TvShows: React.FC = () => {
   }
 
   return (
-    <div>
+    <div className="movies-container">
       {loading ? (
         <p>Loading...</p>
       ) : (
         <>
-          <h2 style={{ textAlign: 'center', color: 'white' }}>
-            Top Rated TV Shows
-          </h2>
-          {renderPaginatedTvShows(toprated, currentPageTopRated)}
+          <div className="category-container">
+            <h2 className="category-title">Top Rated TV Shows</h2>
+            <div className="movies-container-horizontal">
+              {renderTvShows(toprated)}
+            </div>
+          </div>
 
-          <ReactPaginate
-            pageCount={Math.ceil(toprated.length / tvPerPage)}
-            pageRangeDisplayed={2}
-            marginPagesDisplayed={1}
-            onPageChange={handlePageClickTopRated}
-            containerClassName="pagination"
-            activeClassName="active"
-          />
+          <hr className="divider" />
 
-          <hr />
-          <h2 style={{ textAlign: 'center', color: 'white' }}>
-            Popular TV Shows
-          </h2>
-          {renderPaginatedTvShows(popular, currentPagePopular)}
+          <div className="category-container">
+            <h2 className="category-title"> Popular TV Shows </h2>
+            <div className="movies-container-horizontal">
+              {renderTvShows(popular)}
+            </div>
+          </div>
 
-          <ReactPaginate
-            pageCount={Math.ceil(popular.length / tvPerPage)}
-            pageRangeDisplayed={2}
-            marginPagesDisplayed={1}
-            onPageChange={handlePageClickPopular}
-            containerClassName="pagination"
-            activeClassName="active"
-          />
+          <hr className="divider" />
 
-          <hr />
-          <h2 style={{ textAlign: 'center', color: 'white' }}>Airing Today</h2>
-          {renderPaginatedTvShows(airingtoday, currentPageAiringToday)}
-
-          <ReactPaginate
-            pageCount={Math.ceil(airingtoday.length / tvPerPage)}
-            pageRangeDisplayed={2}
-            marginPagesDisplayed={1}
-            onPageChange={handlePageClickAiringToday}
-            containerClassName="pagination"
-            activeClassName="active"
-          />
+          <div className="category-container">
+            <h2 className="category-title"> Airing Today </h2>
+            <div className="movies-container-horizontal">
+              {renderTvShows(airingtoday)}
+            </div>
+          </div>
         </>
       )}
     </div>
