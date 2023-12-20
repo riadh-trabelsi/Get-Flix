@@ -1,63 +1,51 @@
-.tvshows-container {
+.series-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  margin: 0 -15px; /* Adjust as needed */
-}
-
-.tvshow-slide {
-  flex: 0 0 calc(20% - 30px); /* Adjust as needed */
-  margin: 15px;
-  cursor: pointer;
-}
-
-/* Add any additional styling as needed */
-/* Movies.css */
-
-.pagination {
-  display: flex;
-  justify-content: center;
-  list-style: none;
-  padding: 0;
-  margin-top: 20px;
-}
-
-.pagination li {
-  margin: 0 5px;
-}
-
-.pagination a {
-  color: #fff;
-  text-decoration: none;
-  padding: 8px 12px;
-  border: 1px solid #333;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-  background-color: transparent;
-}
-
-.pagination a:hover {
-  background-color: #333;
-}
-
-.pagination .active a {
-  background-color: #32de84;
-  color: #fff;
-  border: 1px solid #32de84;
-}
-
-.pagination .disabled a {
-  color: #ccc;
-  pointer-events: none;
-  cursor: default;
-}
-
-/* Additional styles for pagination arrows */
-.pagination .prev-next {
-  display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
-.pagination .prev-next a {
-  margin: 0 5px;
+.categosery-container {
+  margin: 20px;
+}
+
+.categosery-title {
+  text-align: center;
+  color: white;
+}
+
+.serie-card {
+  cursor: pointer;
+}
+
+.serie-card img {
+  width: 150px;
+  height: auto;
+  border: 3px solid #32de84;
+  border-radius: 20px;
+}
+
+.series-container-horizontal {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  padding: 10px;
+  white-space: nowrap;
+  width: 100%;
+  max-width: 800px;
+
+  scrollbar-width: thin;
+  scrollbar-color: #32de84 #1c1c1c;
+}
+
+.series-container-horizontal::-webkit-scrollbar {
+  width: 12px;
+}
+
+.series-container-horizontal::-webkit-scrollbar-thumb {
+  background-color: #32de84;
+  border-radius: 6px;
+}
+
+.series-container-horizontal::-webkit-scrollbar-track {
+  background-color: #1c1c1c;
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import './Movies.css' // Add your own CSS file for styling
+import './Series.css' // Add your own CSS file for styling
 
 interface TvShow {
   id: number
@@ -48,66 +48,56 @@ const TvShows: React.FC = () => {
     fetchData()
   }, [])
 
-  const renderTvShows = (tvshows: TvShow[]) => {
-    return (
-      <div className="movies-container">
-        {tvshows.map((tvshow) => (
-          <div
-            key={tvshow.poster_path}
-            className="movie-card"
-            onClick={() => handleTvShowClick(tvshow.id)}
-          >
-            <Link to={`/tvshow/${tvshow.id}`}>
-              <img
-                src={`https://image.tmdb.org/t/p/w500/${tvshow.poster_path}`}
-                alt={`${tvshow.title} Poster`}
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  border: '3px solid #32de84',
-                  borderRadius: '20px',
-                }}
-              />
-            </Link>
-          </div>
-        ))}
-      </div>
-    )
-  }
-
   const handleTvShowClick = (id: number) => {
     const isMovie = false
     const TvDetailPageRoute = isMovie ? `/movie/${id}` : `/tvshow/${id}`
     window.location.href = TvDetailPageRoute
   }
 
+  const renderTvShows = (tvshows: TvShow[]) => {
+    return tvshows.map((tvshow) => (
+      <div
+        key={tvshow.poster_path}
+        className="serie-card"
+        onClick={() => handleTvShowClick(tvshow.id)}
+      >
+        <Link to={`/tvshow/${tvshow.id}`}>
+          <img
+            src={`https://image.tmdb.org/t/p/w500/${tvshow.poster_path}`}
+            alt={`${tvshow.title} Poster`}
+          />
+        </Link>
+      </div>
+    ))
+  }
+
   return (
-    <div className="movies-container">
+    <div className="series-container">
       {loading ? (
         <p>Loading...</p>
       ) : (
         <>
-          <div className="category-container">
-            <h2 className="category-title">Top Rated TV Shows</h2>
-            <div className="movies-container-horizontal">
+          <div className="categosery-container">
+            <h2 className="categosery-title">Top Rated TV Shows</h2>
+            <div className="series-container-horizontal">
               {renderTvShows(toprated)}
             </div>
           </div>
 
-          <hr className="divider" />
+          <hr className="divide" />
 
-          <div className="category-container">
-            <h2 className="category-title"> Popular TV Shows </h2>
-            <div className="movies-container-horizontal">
+          <div className="categosery-container">
+            <h2 className="categosery-title"> Popular TV Shows </h2>
+            <div className="series-container-horizontal">
               {renderTvShows(popular)}
             </div>
           </div>
 
-          <hr className="divider" />
+          <hr className="divide" />
 
-          <div className="category-container">
-            <h2 className="category-title"> Airing Today </h2>
-            <div className="movies-container-horizontal">
+          <div className="categosery-container">
+            <h2 className="categosery-title"> Airing Today </h2>
+            <div className="series-container-horizontal">
               {renderTvShows(airingtoday)}
             </div>
           </div>
