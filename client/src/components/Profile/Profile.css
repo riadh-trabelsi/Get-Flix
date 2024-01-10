@@ -10,7 +10,8 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-end; / Add this line to move content to the right 
+  justify-content: flex-end; 
+
 }
 
 img {
