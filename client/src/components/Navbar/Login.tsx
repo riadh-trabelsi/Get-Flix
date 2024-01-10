@@ -31,7 +31,7 @@ const Login: React.FC = () => {
       console.log('Login successful. Data:', data)
       setLoginError(null)
     } catch (error) {
-      console.error('Error during login:', error.message)
+      console.error('Error during login:', error as Error)
       setLoginError('Invalid email or password')
     } finally {
       setLoading(false)

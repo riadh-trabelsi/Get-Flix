@@ -1,9 +1,42 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Profile.css'
 
 const ProfilePage: React.FC = () => {
   const [profilePicture, setProfilePicture] = useState<string | null>(null)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const [userInfo, setUserInfo] = useState<any>({}) // Adjust the type accordingly
+  const [name, setName] = useState<string>('')
+  const [email, setEmail] = useState<string>('')
+
+  useEffect(() => {
+    // Fetch user info when the component mounts
+    getUserInfo()
+  }, [])
+
+  const getUserInfo = async () => {
+    try {
+      const response = await fetch('http://localhost5050/api/users/profile', {
+        method: 'GET',
+        headers: {},
+        credentials: 'include',
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch user information')
+      }
+
+      const userData = await response.json()
+      setUserInfo(userData)
+      setName(userData.name || '') // Assuming your user data has a 'name' field
+      setEmail(userData.email || '') // Assuming your user data has an 'email' field
+
+      // You may set other profile-related data here as needed
+      // setProfilePicture(userData.profilePicture);
+      // ...
+    } catch (error) {
+      setErrorMessage(error.message)
+    }
+  }
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
@@ -42,33 +75,85 @@ const ProfilePage: React.FC = () => {
     }
   }
 
+  const updateUserInfo = async () => {
+    try {
+      const response = await fetch('http://localhost5050/api/users/update', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          // Add any other headers if needed, such as authorization headers
+        },
+        // Add the necessary payload for updating user info
+        body: JSON.stringify({
+          name,
+          email,
+          // ... (other update data)
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to update user information')
+      }
+
+      // Handle successful update
+      // ...
+
+      // Optionally, you can re-fetch user info to update the displayed data
+      getUserInfo()
+    } catch (error) {
+      setErrorMessage(error.message)
+    }
+  }
+
   return (
     <div className="profile-container">
       <header>
         <h1>User Profile</h1>
       </header>
       <section>
-        <label htmlFor="profilePictureInput">
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+        <div className="user-info">
           <img
             src={profilePicture || 'default-profile-picture.jpg'}
             alt="Profile Picture"
           />
-          <input
-            type="file"
-            id="profilePictureInput"
-            accept="image/*"
-            onChange={handleFileChange}
-          />
-        </label>
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
-        <h2>John Doe</h2>
-        <p>Email: john.doe@example.com</p>
-        <p>Location: City, Country</p>
-        <p>
-          Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-          eget justo vel purus accumsan consectetur. Duis non ante vel lacus
-          venenatis varius ac vel odio.
-        </p>
+          <label htmlFor="profilePictureInput">
+            <input
+              type="file"
+              id="profilePictureInput"
+              accept="image/*"
+              onChange={handleFileChange}
+            />
+          </label>
+          <label htmlFor="FirstNameInput">
+            First name:
+            <input
+              type="text"
+              id="firstNameInput"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </label>
+          <label htmlFor="LastNameInput">
+            Last Name:
+            <input
+              type="text"
+              id="lastNameInput"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </label>
+          <label htmlFor="emailInput">
+            Email:
+            <input
+              type="text"
+              id="emailInput"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
+        </div>
+        <button onClick={updateUserInfo}>Update User Info</button>
       </section>
     </div>
   )
