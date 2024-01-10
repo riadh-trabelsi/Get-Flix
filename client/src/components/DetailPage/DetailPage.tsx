@@ -4,6 +4,16 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom'
 
 interface MovieDetail {
+  id: Number
+  title: String
+  synopsis: String
+  release_date: Date
+  genre_ids: [Number]
+  poster_path: String
+  genres: String
+  tmdbRating: Number
+  trailerKey: String
+  releaseDate: string
   // Define the types for the movie details
 }
 
@@ -16,12 +26,12 @@ const MovieDetailPage: React.FC = () => {
   useEffect(() => {
     const fetchContentDetails = async () => {
       try {
-        const endpoint = `http://localhost:5050/movies/moviedetails/${id}`
+        const endpoint = `https://viewtopia-zlcc.onrender.com/movies/moviedetails/${id}`
         const response = await axios.get<MovieDetail>(endpoint)
         setContentDetails(response.data)
       } catch (error) {
         console.error('Error fetching content details:', error)
-        setError(error)
+        setError(error as Error)
       } finally {
         setLoading(false)
       }
@@ -48,7 +58,7 @@ const MovieDetailPage: React.FC = () => {
         className="row justify-content-center "
         style={{ margin: 0, padding: 0 }}
       >
-        <div className="col-lg-6 col-sm-12 col-md-6" style={{ padding: 0 }}>
+        <div className="col-lg-4 col-sm-12 col-md-6" style={{ padding: 0 }}>
           <div
             className="card d-flex flex-row"
             style={{
@@ -92,7 +102,7 @@ const MovieDetailPage: React.FC = () => {
               <hr />
               <h5>{contentDetails.releaseDate}</h5>
               <hr />
-              <h5>Rating: {contentDetails.tmdbRating}</h5>
+              <h5> Rating: {`${contentDetails.tmdbRating}`}</h5>
               <hr />
               <div
                 className="trailer"

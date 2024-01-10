@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import Slider from 'react-slick'
 import { Link } from 'react-router-dom'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
+import './Series.css' // Add your own CSS file for styling
 
 interface TvShow {
   id: number
@@ -27,21 +25,21 @@ const TvShows: React.FC = () => {
     const fetchData = async () => {
       try {
         const topratedResponse = await axios.get(
-          'http://localhost:5050/tvshows/toprated',
+          'https://viewtopia-zlcc.onrender.com/tvshows/toprated',
         )
         setToprated(topratedResponse.data)
 
         const popularResponse = await axios.get(
-          'http://localhost:5050/tvshows/popular',
+          'https://viewtopia-zlcc.onrender.com/tvshows/popular',
         )
         setPopular(popularResponse.data)
 
         const airingtodayResponse = await axios.get(
-          'http://localhost:5050/tvshows/airingtoday',
+          'https://viewtopia-zlcc.onrender.com/tvshows/airingtoday',
         )
         setAiringToday(airingtodayResponse.data)
       } catch (error) {
-        console.error('Error fetching movies:', error)
+        console.error('Error fetching TV shows:', error)
       } finally {
         setLoading(false)
       }
@@ -56,60 +54,53 @@ const TvShows: React.FC = () => {
     window.location.href = TvDetailPageRoute
   }
 
-  const renderTvShows = (tvShows: TvShow[]) => {
-    return tvShows.map((tvShow) => (
+  const renderTvShows = (tvshows: TvShow[]) => {
+    return tvshows.map((tvshow) => (
       <div
-        key={tvShow.poster_path}
-        className="tv-show-slide"
-        onClick={() => handleTvShowClick(tvShow.id)}
+        key={tvshow.poster_path}
+        className="serie-card"
+        onClick={() => handleTvShowClick(tvshow.id)}
       >
-        <Link to={`/tvshow/${tvShow.id}`}>
+        <Link to={`/tvshow/${tvshow.id}`}>
           <img
-            src={`https://image.tmdb.org/t/p/w500/${tvShow.poster_path}`}
-            alt={`${tvShow.title} Poster`}
-            style={{
-              width: '70%',
-              height: 'auto',
-              border: '3px solid #32de84',
-              borderRadius: '20px',
-              marginLeft: '10%',
-            }}
+            src={`https://image.tmdb.org/t/p/w500/${tvshow.poster_path}`}
+            alt={`${tvshow.title} Poster`}
           />
         </Link>
       </div>
     ))
   }
 
-  const sliderSettings = {
-    infinite: true,
-    slidesToShow: 5,
-    slidesToScroll: 1,
-    autoplay: true,
-    speed: 1500,
-    autoplaySpeed: 3000,
-    arrows: true,
-  }
-
   return (
-    <div>
+    <div className="series-container">
       {loading ? (
         <p>Loading...</p>
       ) : (
         <>
-          <h2 style={{ textAlign: 'center', color: 'white' }}>
-            Top Rated TV Shows
-          </h2>
-          <Slider {...sliderSettings}>{renderTvShows(toprated)}</Slider>
+          <div className="categosery-container">
+            <h2 className="categosery-title">Top Rated TV Shows</h2>
+            <div className="series-container-horizontal">
+              {renderTvShows(toprated)}
+            </div>
+          </div>
 
-          <hr />
-          <h2 style={{ textAlign: 'center', color: 'white' }}>
-            Popular TV Shows
-          </h2>
-          <Slider {...sliderSettings}>{renderTvShows(popular)}</Slider>
+          <hr className="divide" />
 
-          <hr />
-          <h2 style={{ textAlign: 'center', color: 'white' }}>Airing Today</h2>
-          <Slider {...sliderSettings}>{renderTvShows(airingtoday)}</Slider>
+          <div className="categosery-container">
+            <h2 className="categosery-title"> Popular TV Shows </h2>
+            <div className="series-container-horizontal">
+              {renderTvShows(popular)}
+            </div>
+          </div>
+
+          <hr className="divide" />
+
+          <div className="categosery-container">
+            <h2 className="categosery-title"> Airing Today </h2>
+            <div className="series-container-horizontal">
+              {renderTvShows(airingtoday)}
+            </div>
+          </div>
         </>
       )}
     </div>

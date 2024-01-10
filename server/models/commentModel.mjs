@@ -1,19 +1,23 @@
 import mongoose from 'mongoose';
 
 const CommentSchema = new mongoose.Schema({
-    user: {
+    userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        required: trusted
+        required: true
     },
     content: {
         type: String,
         required: true
     },
-    movie: { 
+    entity: { 
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Movie',
+        refPath: 'onModel',
         required: true
+    },
+    onModel: {
+        type: String,
+        enum: ['MovieModel', 'TvShowModel']
     },
     timestamp: {
         type: Date,

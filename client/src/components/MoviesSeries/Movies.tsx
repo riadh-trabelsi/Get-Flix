@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import Slider from 'react-slick'
 import { Link } from 'react-router-dom'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
+import './Movies.css' // Add your own CSS file for styling
 
 interface Movie {
   id: number
@@ -26,17 +24,17 @@ const Movies: React.FC = () => {
     const fetchData = async () => {
       try {
         const latestResponse = await axios.get(
-          'http://localhost:5050/movies/latest',
+          'https://viewtopia-zlcc.onrender.com/movies/latest',
         )
         setLatestMovies(latestResponse.data)
 
         const popularResponse = await axios.get(
-          'http://localhost:5050/movies/popular',
+          'https://viewtopia-zlcc.onrender.com/movies/popular',
         )
         setPopularMovies(popularResponse.data)
 
         const upcomingResponse = await axios.get(
-          'http://localhost:5050/movies/upcoming',
+          'https://viewtopia-zlcc.onrender.com/movies/upcoming',
         )
         setUpcomingMovies(upcomingResponse.data)
       } catch (error) {
@@ -59,56 +57,45 @@ const Movies: React.FC = () => {
     return movies.map((movie) => (
       <div
         key={movie.poster_path}
-        className="movie-slide"
+        className="movie-card"
         onClick={() => handleMovieClick(movie.id)}
       >
-        <Link to="/movie/${movie.id}">
+        <Link to={`/movie/${movie.id}`}>
           <img
             src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
             alt={`${movie.title} Poster`}
-            style={{
-              width: '70%',
-              height: 'auto',
-              border: '3px solid #32de84',
-              borderRadius: '20px',
-              marginLeft: '10%',
-            }}
           />
         </Link>
       </div>
     ))
   }
 
-  const sliderSettings = {
-    infinite: true,
-    slidesToShow: 5,
-    slidesToScroll: 1,
-    autoplay: true,
-    speed: 1500,
-    autoplaySpeed: 3000,
-    arrows: true,
-  }
-
   return (
-    <div>
+    <div className="movies-container">
       {loading ? (
         <p>Loading...</p>
       ) : (
         <>
-          <h2 style={{ textAlign: 'center', color: 'white' }}>Latest Movies</h2>
-          <Slider {...sliderSettings}>{renderMovies(latestMovies)}</Slider>
+          <div className="category-container">
+            <h2 className="category-title">Upcoming Movies</h2>
+            <div className="movies-container-horizontal">
+              {renderMovies(upcomingMovies)}
+            </div>
+          </div>
 
-          <hr />
-          <h2 style={{ textAlign: 'center', color: 'white' }}>
-            Popular Movies
-          </h2>
-          <Slider {...sliderSettings}>{renderMovies(popularMovies)}</Slider>
+          <div className="category-container">
+            <h2 className="category-title">Latest Movies</h2>
+            <div className="movies-container-horizontal">
+              {renderMovies(latestMovies)}
+            </div>
+          </div>
 
-          <hr />
-          <h2 style={{ textAlign: 'center', color: 'white' }}>
-            Upcoming Movies
-          </h2>
-          <Slider {...sliderSettings}>{renderMovies(upcomingMovies)}</Slider>
+          <div className="category-container">
+            <h2 className="category-title">Popular Movies</h2>
+            <div className="movies-container-horizontal">
+              {renderMovies(popularMovies)}
+            </div>
+          </div>
         </>
       )}
     </div>

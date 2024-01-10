@@ -6,7 +6,7 @@ import './Login.css'
 const Login: React.FC = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [loginError, setLoginError] = useState<string | null>(null)
+  const [, setLoginError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -15,13 +15,16 @@ const Login: React.FC = () => {
     try {
       setLoading(true)
 
-      const response = await fetch('http://localhost:5050/api/sessionRoutes', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        'https://viewtopia-zlcc.onrender.com/api/sessionRoutes',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email, password }),
         },
-        body: JSON.stringify({ email, password }),
-      })
+      )
 
       if (!response.ok) {
         throw new Error('Login failed')
@@ -31,7 +34,10 @@ const Login: React.FC = () => {
       console.log('Login successful. Data:', data)
       setLoginError(null)
     } catch (error) {
-      console.error('Error during login:', error as Error)
+      if (error instanceof Error) {
+        console.error('Error during login:', error as Error)
+      }
+
       setLoginError('Invalid email or password')
     } finally {
       setLoading(false)

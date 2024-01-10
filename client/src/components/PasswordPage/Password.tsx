@@ -1,37 +1,40 @@
-import React, { useState } from 'react';
-import './Password.css';
+import React, { useState } from 'react'
+import './Password.css'
 
 const PasswordPage: React.FC = () => {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState('')
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
-  };
+    setEmail(e.target.value)
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
 
     try {
-      const response = await fetch('http://localhost:5050/api/password', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        'https://viewtopia-zlcc.onrender.com/api/password',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+          body: JSON.stringify({ email }),
         },
-        credentials :"include",
-        body: JSON.stringify({ email }),
-      });
+      )
 
       if (response.ok) {
         // Password recovery initiated successfully, handle success (e.g., show a success message)
-        console.log('Password recovery initiated successfully');
+        console.log('Password recovery initiated successfully')
       } else {
         // Handle error (e.g., show an error message)
-        console.error('Password recovery failed');
+        console.error('Password recovery failed')
       }
     } catch (error) {
-      console.error('An error occurred during password recovery:', error);
+      console.error('An error occurred during password recovery:', error)
     }
-  };
+  }
 
   return (
     <div className="container">
@@ -49,7 +52,7 @@ const PasswordPage: React.FC = () => {
                 <div className="form-floating mb-3">
                   <input
                     type="email"
-                    name='email'
+                    name="email"
                     className="form-control"
                     id="floatingInputEmail"
                     placeholder="name@example.com"
@@ -74,7 +77,7 @@ const PasswordPage: React.FC = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default PasswordPage;
+export default PasswordPage

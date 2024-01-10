@@ -1,29 +1,30 @@
-.movies-container {
+.series-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.category-container {
+.categosery-container {
   margin: 20px;
 }
 
-.category-title {
+.categosery-title {
   text-align: center;
   color: white;
 }
 
-.movie-card {
+.serie-card {
   cursor: pointer;
 }
 
-.movie-card img {
+.serie-card img {
   width: 200px;
   height: auto;
   border: 3px solid #32de84;
   border-radius: 20px;
 }
-.movies-container-horizontal {
+
+.series-container-horizontal {
   display: flex;
   overflow-x: auto;
   gap: 10px;
@@ -31,19 +32,20 @@
   white-space: nowrap;
   width: 100%;
   max-width: 1500px;
+
   scrollbar-width: thin;
   scrollbar-color: #32de84 #1c1c1c;
 }
 
-.movies-container-horizontal::-webkit-scrollbar {
+.series-container-horizontal::-webkit-scrollbar {
   width: 12px;
 }
 
-.movies-container-horizontal::-webkit-scrollbar-thumb {
+.series-container-horizontal::-webkit-scrollbar-thumb {
   background-color: #32de84;
   border-radius: 6px;
 }
 
-.movies-container-horizontal::-webkit-scrollbar-track {
+.series-container-horizontal::-webkit-scrollbar-track {
   background-color: #1c1c1c;
 }

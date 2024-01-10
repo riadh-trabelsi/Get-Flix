@@ -8,7 +8,7 @@
   padding-top: 20px;
   padding-bottom: 20px;
 
- linear-gradient:(#ffffff, #348cd2);
+  background-image: linear-gradient(#ffffff, #348cd2);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -314,10 +314,9 @@
   .navbar-nav {
     background-color: rgb(33, 23, 43);
     border-radius: var(--border-radius-medium);
-   
+
     text-align: center;
-    margin:10px 50px;
-   
+    margin: 10px 50px;
   }
 
   .navbar-nav .nav-link {

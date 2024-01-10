@@ -14,7 +14,9 @@ const Signup: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:5050/api/users')
+        const response = await fetch(
+          'https://viewtopia-zlcc.onrender.com/api/users',
+        )
         const result = await response.json()
         setData(result)
       } catch (error) {
@@ -24,6 +26,8 @@ const Signup: React.FC = () => {
 
     fetchData()
   }, [])
+
+  console.log('Data:', data)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -35,13 +39,16 @@ const Signup: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     try {
-      const response = await fetch('http://localhost:5050/api/users', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        'https://viewtopia-zlcc.onrender.com/api/users',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
         },
-        body: JSON.stringify(formData),
-      })
+      )
 
       const result = await response.json()
       console.log('Form submitted successfully:', result)
@@ -111,7 +118,7 @@ const Signup: React.FC = () => {
                     onChange={handleChange}
                   />
                 </div>
-<br />
+                <br />
                 <div className="d-grid mb-2">
                   <button
                     className="btn btn-lg btn-primary btn-login fw-bold "

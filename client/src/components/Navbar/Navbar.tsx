@@ -1,12 +1,10 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import './Navbar.css'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {  Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import SearchBar from './SearchBar'
 import SearchResultsSection from '../Homepage/SearchResultsSection'
 const Navbar: React.FC = () => {
@@ -46,7 +44,7 @@ const Navbar: React.FC = () => {
             <SearchBar
               onSearchResults={handleSearch}
               currentPage={currentPage}
-              apiBaseUrl={'http://localhost:5050'} // Replace with your actual API base URL
+              apiBaseUrl={'https://viewtopia-zlcc.onrender.com'} // Replace with your actual API base URL
             />
             <button
               className="navbar-toggler"
@@ -57,54 +55,77 @@ const Navbar: React.FC = () => {
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span className="navbar-toggler-icon"  />
+              <span className="navbar-toggler-icon" />
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav ms-lg-auto">
                 <li className="nav-item">
-                  <Link className="nav-link active" to="./Homepage" style= {{color:'white'}}>
+                  <Link
+                    className="nav-link active"
+                    to="./Homepage"
+                    style={{ color: 'white' }}
+                    onClick={() => handlePageChange('homepage')}
+                  >
                     HomePage
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link active" to="./movies" style= {{color:'white'}}>
+                  <Link
+                    className="nav-link active"
+                    to="./movies"
+                    style={{ color: 'white' }}
+                    onClick={() => handlePageChange('movies')}
+                  >
                     Movies
                   </Link>
                 </li>
 
                 <li className="nav-item">
-                  <Link className="nav-link active" to="./series" style= {{color:'white'}}>
-                  Series
+                  <Link
+                    className="nav-link active"
+                    to="./series"
+                    style={{ color: 'white' }}
+                    onClick={() => handlePageChange('series')}
+                  >
+                    Series
                   </Link>
                 </li>
+
                 <li className="nav-item">
                   <Link className="nav-link" to="/Contact">
                     Contact
                   </Link>
                 </li>
-             
-              <div className="ms-4" >
-                <Link
-                  to="/Login"
-                  className="btn custom-btn custom-border-btn smoothscroll"
-                >
-                  Login
-                </Link>
-              </div>
-              <div className="ms-4">
-                <Link
-                  to="/Profile"
-                  className="btn custom-btn custom-border-btn smoothscroll"
-                >
-                  <FontAwesomeIcon icon={faUser} />
-                </Link>
-              </div> 
+
+                <div className="ms-4">
+                  <Link
+                    to="/Login"
+                    className="btn custom-btn custom-border-btn smoothscroll"
+                  >
+                    Login
+                  </Link>
+                </div>
+                <div className="ms-4">
+                  <Link
+                    to="/Profile"
+                    className="btn custom-btn custom-border-btn smoothscroll"
+                  >
+                    <FontAwesomeIcon icon={faUser} />
+                  </Link>
+                </div>
               </ul>
             </div>
           </div>
         </nav>
       </div>
-      <SearchResultsSection results={searchResults} />
+      <SearchResultsSection
+        results={searchResults}
+        searchMade={false}
+        currentPage={''}
+        onSearchResultClick={function (_id: number, _type: string): void {
+          throw new Error('Function not implemented.')
+        }}
+      />
     </>
   )
 }

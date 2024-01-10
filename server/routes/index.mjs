@@ -1,17 +1,19 @@
-import userRoutes from './userRoute.mjs';
+import userRoutes from './userRoutes.mjs';
 import authRoutes from './authRoutes.mjs';
-import passwordRoutes from './password.mjs';
+import passwordRoutes from './passwordRoutes.mjs';
 import movieRoutes from './movie.mjs'
 import homepageRoutes from './homepage.mjs'
 import tvShowsRoutes from './tvshows.mjs'
-
-// import commentRoutes from './comment.mjs';
+import commentRoutes from './commentRoutes.mjs'
+import contactRoutes from './contactRoutes.mjs';
 
 export {
   userRoutes,
   passwordRoutes,
-  movieRoutes /**commentRoutes**/,
+  movieRoutes,
   homepageRoutes,
   tvShowsRoutes,
   authRoutes ,
+  commentRoutes,
+  contactRoutes
 }
