@@ -15,6 +15,14 @@ Get-Flix is a web application that allows users to explore and watch a vast coll
 ##Preview
 [Viewtopia](https://viewtopiafront.onrender.com/)
 
+## Preview
+
+![](./img/homepage.PNG)
+![](./img/homepage1.PNG)
+![](./img/movies.PNG)
+![](./img/series.PNG)
+![](./img/login.PNG)
+
 ## Features
 
 - **Browse Movies**: Explore a diverse catalog of movies.
