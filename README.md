@@ -3,6 +3,7 @@
 Get-Flix is a web application that allows users to explore and watch a vast collection of movies. With a user-friendly interface and a wide range of genres, Get-Flix aims to provide an engaging and enjoyable movie-watching experience.
 
 ## Table of Contents
+- [Preview)_(#previw)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Getting Started](#getting-started)
@@ -10,6 +11,9 @@ Get-Flix is a web application that allows users to explore and watch a vast coll
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
+  
+##Preview
+[Viewtopia](https://viewtopiafront.onrender.com/)
 
 ## Features
 
