@@ -1,0 +1,74 @@
+body {
+  background-image: url('../../../images/templatemo-wave-banner.jpg'),
+    linear-gradient(#ffffff, #348cd2);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-img-left {
+  width: 45%;
+  background: scroll center
+    url('https://source.unsplash.com/WEQbe2jBg40/414x512');
+  background-size: cover;
+}
+
+.btn-login {
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+}
+
+.form-control {
+  position: relative;
+  z-index: 1;
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid #ced4da;
+}
+
+.form-floating {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-floating > .form-control {
+  height: calc(3.5rem + 2px);
+  padding: 1rem 0.75rem;
+}
+
+.form-floating > label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  padding: 1rem 0.75rem;
+  overflow: hidden;
+  text-align: start;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: none;
+  border: 1px solid transparent;
+  transform-origin: 0 0;
+  transition:
+    opacity 0.1s ease-in-out,
+    transform 0.1s ease-in-out;
+  color: #6c757d;
+}
+
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+  transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+  background-color: #ffffff;
+  padding: 0 0.5rem;
+}
+
+.form-floating > .form-control:focus {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  outline: none;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.9);
+}

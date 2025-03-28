@@ -1,0 +1,40 @@
+{
+  "name": "viewtopia",
+  "description": "This is a quick start project template that combines the power of Vite.js and the MERN (MongoDB, Express, React, Node.js) stack. It provides a solid foundation for building modern web applications with a fast development experience.",
+  "author": "GRYR",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react-slick": "^0.23.12",
+    "concurrently": "^8.2.0",
+    "nodemon": "^3.0.1",
+    "prettier": "^3.0.0",
+    "sass": "^1.69.5",
+    "vite-plugin-style-import": "^2.0.0"
+  },
+  "scripts": {
+    "dev": "concurrently \"cd server && nodemon server.mjs\" \"cd client && npm run dev\"",
+    "dev-client": "concurrently \"cd client && npm run dev\" \"cd client && npm run sass\"",
+    "install-server": "cd server && npm install",
+    "start-server": "cd server && node server.mjs",
+    "install-client": "cd client && npm install",
+    "build-client": "cd client && npm run build",
+    "start-client": "cd client && npm run start"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@types/jquery": "^3.5.29",
+    "@types/react-helmet": "^6.1.9",
+    "axios": "^1.6.2",
+    "bootstrap": "^5.3.2",
+    "react-bootstrap": "^2.9.1",
+    "react-helmet": "^6.1.0",
+    "react-responsive-carousel": "^3.2.23",
+    "react-router-dom": "^6.20.1",
+    "react-slick": "^0.29.0",
+    "slick-carousel": "^1.8.1"
+  }
+}

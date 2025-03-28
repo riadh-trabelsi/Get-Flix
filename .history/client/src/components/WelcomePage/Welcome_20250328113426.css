@@ -1,0 +1,416 @@
+.card {
+    overflow: visible;
+    
+
+  }
+  
+  .content {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 300ms;
+    box-shadow: 0px 0px 10px 1px #000000ee;
+    border-radius: 5px;
+  }
+  
+  .front, .back {
+    background-color: #151515;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .back {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .back::before {
+    position: absolute;
+    content: ' ';
+    display: block;
+    width: 160px;
+    height: 160%;
+    background: linear-gradient(90deg, transparent, #ff9966, #ff9966, #ff9966, #ff9966, transparent);
+    animation: rotation_481 5000ms infinite linear;
+  }
+  
+  .back-content {
+    position: absolute;
+    width: 99%;
+    height: 99%;
+    background-color: #070808;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+  }
+  
+  .card:hover .content {
+    transform: rotateY(180deg);
+  }
+  
+  @keyframes rotation_481 {
+    0% {
+      transform: rotateZ(0deg);
+    }
+  
+    0% {
+      transform: rotateZ(360deg);
+    }
+  }
+  
+  .front {
+    transform: rotateY(180deg);
+    color: white;
+  }
+  
+  .front .front-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .front-content .badge {
+    background-color: #00000055;
+    padding: 2px 10px;
+    border-radius: 10px;
+    backdrop-filter: blur(2px);
+    width: fit-content;
+  }
+  
+  .description {
+    box-shadow: 0px 0px 10px 5px #00000088;
+    width: 100%;
+    padding: 10px;
+    background-color: #00000099;
+    backdrop-filter: blur(5px);
+    border-radius: 5px;
+  }
+  
+  .title {
+    font-size: 11px;
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .title p {
+    width: 50%;
+  }
+  
+  .card-footer {
+    color: #ffffff88;
+    margin-top: 5px;
+    font-size: 8px;
+  }
+  
+  .front .img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  .circle {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background-color: #ffbb66;
+    position: relative;
+    filter: blur(15px);
+    animation: floating 2600ms infinite linear;
+  }
+  
+  #bottom {
+    background-color: #ff8866;
+    left: 50px;
+    top: 0px;
+    width: 150px;
+    height: 150px;
+    animation-delay: -800ms;
+  }
+  
+  #right {
+    background-color: #ff2233;
+    left: 160px;
+    top: -80px;
+    width: 30px;
+    height: 30px;
+    animation-delay: -1800ms;
+  }
+  
+  @keyframes floating {
+    0% {
+      transform: translateY(0px);
+    }
+  
+    50% {
+      transform: translateY(10px);
+    }
+  
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  button {
+    font-size: 12px;
+    display: inline-block;
+    outline: 0;
+ 
+    cursor: pointer;
+    will-change: box-shadow,transform;
+    background: radial-gradient( 100% 100% at 100% 0%, #89E5FF 0%, #5468FF 100% );
+    box-shadow: 0px 0.01em 0.01em rgb(45 35 66 / 40%), 0px 0.3em 0.7em -0.01em rgb(45 35 66 / 30%), inset 0px -0.01em 0px rgb(58 65 111 / 50%);
+    padding: 0 2em;
+    border-radius: 0.3em;
+    color: #fff;
+    
+    width: 130px;
+    text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+  }
+  
+  button:hover {
+    box-shadow: 0px 0.1em 0.2em rgb(45 35 66 / 40%), 0px 0.4em 0.7em -0.1em rgb(45 35 66 / 30%), inset 0px -0.1em 0px #3c4fe0;
+    transform: translateY(-0.1em);
+  }
+  
+  button:active {
+    box-shadow: inset 0px 0.1em 0.6em #3c4fe0;
+    transform: translateY(0em);
+  }
+/* Ajoutez ce style à votre fichier CSS ou directement dans votre fichier JSX en utilisant le style en ligne */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  color: white;
+}
+
+td, th {
+
+  padding: 8px; /* Espacement à l'intérieur de chaque cellule */
+  text-align: left; /* Alignement du texte à gauche dans les cellules */
+ 
+}
+
+h5 {
+  color: white;
+}
+
+.welcome-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url('https://wallpaperaccess.com/full/329666.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+}
+
+.welcome-content {
+  max-width: 800px;
+  width: 100%;
+}
+
+.welcome-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.welcome-content p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.welcome-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.welcome-btn {
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #e50914;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.welcome-btn:hover {
+  background-color: #f40612;
+}
+
+/* Styles pour la carousel */
+.carousel {
+  margin: 2rem 0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-content {
+  position: relative;
+  height: 400px;
+}
+
+.carousel-content img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.carousel-caption {
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+  padding: 2rem;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: left;
+  max-height: 50%;
+  overflow-y: auto;
+}
+
+.carousel-caption h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-caption p {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 1rem;
+}
+
+.carousel-caption .btn-primary {
+  background-color: #e50914;
+  border-color: #e50914;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-caption .btn-primary:hover {
+  background-color: #f40612;
+  border-color: #f40612;
+}
+
+.carousel-indicators {
+  margin-bottom: 1rem;
+}
+
+.carousel-indicators button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 0 5px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+}
+
+.carousel-indicators button.active {
+  background-color: #e50914;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 5%;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .welcome-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .welcome-content p {
+    font-size: 1.2rem;
+  }
+
+  .carousel-content {
+    height: 300px;
+  }
+
+  .carousel-caption h3 {
+    font-size: 1.5rem;
+  }
+
+  .carousel-caption p {
+    font-size: 0.9rem;
+  }
+}
+
+.loading {
+  color: white;
+  font-size: 1.5rem;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.error-message {
+  color: #ff4444;
+  font-size: 1.2rem;
+  margin: 2rem 0;
+  text-align: center;
+  padding: 1rem;
+  background-color: rgba(255, 68, 68, 0.1);
+  border-radius: 5px;
+}
+
+.movie-info {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.movie-info .rating {
+  color: #ffd700;
+  font-weight: bold;
+}
+
+.movie-info .year {
+  color: #fff;
+  font-weight: bold;
+}
